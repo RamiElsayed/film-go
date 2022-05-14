@@ -5,8 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!-- load MUI -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-    <script src="https://kit.fontawesome.com/207fe72a87.js" crossorigin="anonymous"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+    />
+    <script
+      src="https://kit.fontawesome.com/207fe72a87.js"
+      crossorigin="anonymous"
+    ></script>
     <link
       rel="stylesheet"
       href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css"
@@ -20,6 +26,42 @@
     <script src="//cdn.muicss.com/mui-0.10.3/js/mui.min.js"></script>
   </head>
   <body>
+    <header class="navbar has dropdown">
+      <a class="navbar-item">
+        <img class="filmgo-logo" src="./images/filmgo.png" alt="Film-go" />
+      </a>
+      <div class="navbar-menu">
+        <div class="navbar-end">
+          <a class="navbar-item"> Home </a>
+
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link navbar-item"> Genres </a>
+
+            <div class="navbar-dropdown navbar-end">
+              <a class="navbar-item"> Action </a>
+              <a class="navbar-item"> Comedy </a>
+              <a class="navbar-item"> Horror </a>
+              <a class="navbar-item"> Romantic </a>
+              <a class="navbar-item"> Thriller </a>
+              <hr class="navbar-divider" />
+              <a class="navbar-item"> Show All </a>
+            </div>
+          </div>
+
+          <a class="navbar-item"> About Us </a>
+        </div>
+
+        <div>
+          <div class="navbar-item">
+            <div class="buttons">
+              <a class="button is-primary">
+                <strong>Wishlist</strong>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
     <!-- example content -->
     <div class="mui-container">
       <div class="mui-panel">
