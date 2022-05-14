@@ -6,12 +6,6 @@
   --white: #ffffffff;
 }
 
-/* .navbar {
-  justify-content: right;
-  flex-wrap: wrap;
-  background-color: black;
-} */
-
 .filmgo-logo {
   height: 100px;
   width: 100px;
@@ -23,7 +17,11 @@
 
 .navbar-item {
   color: #fca311ff;
-  font-size: large;
+  font-size: 25px;
   font-weight: bold;
   padding: 20px;
+}
+
+.button .is-primary {
+  color: #fca311ff;
 }
