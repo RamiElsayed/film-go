@@ -1,3 +1,5 @@
+const mainElem = document.querySelector("main");
+
 const youtubeApi = "https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=avatar&key=AIzaSyBhTjmkiNU9nfU2EIRNhCQl6R9RYNSf8wc";
 
 fetch(youtubeApi)
@@ -11,5 +13,7 @@ fetch(youtubeApi)
 
      const filmYoutubeVideo = document.createElement("iframe");
      filmYoutubeVideo.src = `https://www.youtube.com/embed/${videoId}?auroplay=0`;
+
+    mainElem.append(filmYoutubeVideo);
     }
   });
