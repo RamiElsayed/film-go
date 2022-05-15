@@ -1,11 +1,13 @@
 // Elements
+// TO DO: Add these id's to the actual file.
 const searchBarEl = $("#searchbar-dynamic");
 const dropDownTitles = $("#dropdown-menu-titles");
 const dropDownContainerEl = $("#dropdown-menu");
 
 // This fetches the titles from the IMD api for the dynamic dropdown list
 
-// Render options
+// This renders all possible options
+// TO DO: Make it only show 5 options.
 const renderDropDownMenu = () => {
   console.log("rendering dropdown");
   const dropdownMenu = `<div class="dropdown-content" id="dropdown-menu-titles"></div>`;
@@ -19,7 +21,7 @@ const renderResults = (title) => {
   dropDownTitles.append(searchResult);
 };
 
-// Onclick button
+// Onclick function for searchbar, if enter key is presed it will send a fetch request.
 searchBarEl[0].addEventListener("keypress", function (event) {
   dropDownContainerEl.empty();
   dropDownTitles.empty();
