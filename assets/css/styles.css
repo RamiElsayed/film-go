@@ -6,6 +6,16 @@
   --white: #ffffffff;
 }
 
+/* AboutMe Card AA */
+.card {
+  width: 20%;
+}
+.socialmediaicons {
+  display: flex;
+  justify-content: center;
+}
+
+
 .filmgo-logo {
   height: 100%;
   width: 100%;
