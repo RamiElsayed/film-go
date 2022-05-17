@@ -7,8 +7,8 @@
 }
 
 .filmgo-logo {
-  height: 150px;
-  width: 250px;
+  height: 100%;
+  width: 100%;
 }
 
 .navbar {
@@ -23,5 +23,42 @@
 }
 
 .buttons {
-  padding: 35px;
+  padding-top: 75px;
+}
+
+@media screen and (max-width: 1022px) {
+  .navbar {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .navbar-brand {
+    width: fit-content;
+    display: flex;
+    justify-content: center;
+  }
+
+  header {
+    width: 100%;
+  }
+
+  .navbar-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-color: black;
+  }
+
+  .buttons {
+    padding: 0px;
+  }
+
+  .navbar-dropdown {
+    display: none;
+  }
+
+  .navbar-item:hover {
+    display: block;
+  }
 }
