@@ -65,7 +65,7 @@
   .custom-banner-image {
     background-size: cover;
     display: flex;
-    background-image: url(../Avatar\ BG.png);
+    background-image: url(/images/Avatar/BG.png);
   }
 
   .custom-btn-banner-size {
