@@ -6,6 +6,61 @@
   --white: #ffffffff;
 }
 
+.filmgo-logo {
+  height: 100%;
+  width: 100%;
+}
+
+.navbar {
+  background-color: black;
+}
+
+.navbar-item {
+  color: #fca311ff;
+  font-size: 25px;
+  font-weight: bold;
+  padding: 20px;
+}
+
+.buttons {
+  padding-top: 75px;
+}
+
+@media screen and (max-width: 1022px) {
+  .navbar {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .navbar-brand {
+    width: fit-content;
+    display: flex;
+    justify-content: center;
+  }
+
+  header {
+    width: 100%;
+  }
+
+  .navbar-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-color: black;
+  }
+
+  .buttons {
+    padding: 0px;
+  }
+
+  .navbar-dropdown {
+    display: none;
+  }
+
+  .navbar-item:hover {
+    display: block;
+  }
 /* Banner settings jeerjs */
 .custom-banner-image {
   background-size: cover;
@@ -35,5 +90,6 @@
     flex-direction: column;
     overflow-x: none;
     height: 100%;
+
   }
 }
