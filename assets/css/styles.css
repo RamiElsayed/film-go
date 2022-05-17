@@ -6,10 +6,9 @@
   --white: #ffffffff;
 }
 
-/* Banner settings jeerjs */--------------------------
+/* Banner settings jeerjs */
 .custom-banner-image {
   background-size: cover;
-
   display: flex;
   background-image: url(../Avatar\ BG.png);
 }
@@ -38,4 +37,3 @@
     height: 100%;
   }
 }
---------------------------------------------------------------
