@@ -5,3 +5,37 @@
   --platinum: #e5e5e5ff;
   --white: #ffffffff;
 }
+
+/* Banner settings jeerjs */--------------------------
+.custom-banner-image {
+  background-size: cover;
+
+  display: flex;
+  background-image: url(../Avatar\ BG.png);
+}
+
+.custom-btn-banner-size {
+  min-width: 200px;
+}
+
+.scrolling-wrapper {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  height: 200px;
+}
+.custom-btn-banner-size {
+  flex: 0 0 auto;
+}
+.scrolling-wrapper {
+  -webkit-overflow-scrolling: touch;
+}
+
+@media screen and (max-width: 768px) {
+  .scrolling-wrapper {
+    flex-direction: column;
+    overflow-x: none;
+    height: 100%;
+  }
+}
+--------------------------------------------------------------
