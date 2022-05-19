@@ -13,9 +13,9 @@ const renderDropDownMenu = () => {
   const dropdownMenu = `<div class="dropdown-content" id="dropdown-menu-titles"></div>`;
   dropDownContainerEl.append(dropdownMenu);
 };
-const renderResults = (title) => {
+const renderResults = (title, id, movieTitle) => {
   const dropDownTitles = $("#dropdown-menu-titles");
-  const searchResult = `<a href="#" class="dropdown-item">
+  const searchResult = `<a href='./thridPage.html' class="dropdown-item" movieTitle="${movieTitle}"movieId="${id}">
                         ${title}
                     </a>`;
   dropDownTitles.append(searchResult);
@@ -24,7 +24,6 @@ const renderResults = (title) => {
 // Onclick function for searchbar, if enter key is presed it will send a fetch request.
 searchBarEl[0].addEventListener("keypress", function (event) {
   dropDownContainerEl.empty();
-  dropDownTitles.empty();
   renderDropDownMenu();
   if (event.keyCode === 13) {
     const title = searchBarEl.val();
@@ -34,23 +33,42 @@ searchBarEl[0].addEventListener("keypress", function (event) {
         return response.json();
       })
       .then(function (data) {
+        console.log(data);
         dataArray = data.results;
         dataArray.forEach((element) => {
-          console.log(element.title);
-          renderResults(element.title);
+          console.log(element.id);
+          renderResults(element.title, element.id, element.title);
         });
       });
   }
 });
 
+// This gets the movie Id and saves it into the local storage.
+dropDownContainerEl[0].addEventListener("click", function (event) {
+  let target = event.target;
+  const dropDownTitles = $("#dropdown-menu-titles");
+  if (target.tagName === "A") {
+    const movieID = target.getAttribute("movieID");
+    const movieTitle = target.getAttribute("movietitle");
+    saveToLS("movieID", movieID);
+    saveToLS("movietitle", movieTitle);
+    dropDownTitles.remove();
+  }
+});
+
 // Initialise local storage.
-const initializeLS = (LSName) => {
+const initializeLS = () => {
   // Calling the schedule array from the local storage
-  const scheduleFromLS = JSON.parse(localStorage.getItem(LSName));
+  const scheduleFromLS = JSON.parse(localStorage.getItem("movieID"));
+  const movieTitleFromLS = JSON.parse(localStorage.getItem("movietitle"));
 
   // If the array is undefined, we create an empty array and push it to the local storage
   if (!scheduleFromLS) {
-    localStorage.setItem(LSName, JSON.stringify([]));
+    localStorage.setItem("movieID", JSON.stringify([]));
+  }
+  // If the array is undefined, we create an empty array and push it to the local storage
+  if (!movieTitleFromLS) {
+    localStorage.setItem("movietitle", JSON.stringify([]));
   }
 };
 
