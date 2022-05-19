@@ -13,9 +13,9 @@ const renderDropDownMenu = () => {
   const dropdownMenu = `<div class="dropdown-content" id="dropdown-menu-titles"></div>`;
   dropDownContainerEl.append(dropdownMenu);
 };
-const renderResults = (title, id, movieTitle) => {
+const renderResults = (title, id) => {
   const dropDownTitles = $("#dropdown-menu-titles");
-  const searchResult = `<a href='./thridPage.html' class="dropdown-item" movieTitle="${movieTitle}"movieId="${id}">
+  const searchResult = `<a href='./thridPage.html' class="dropdown-item" movieTitle="${title}"movieId="${id}">
                         ${title}
                     </a>`;
   dropDownTitles.append(searchResult);
@@ -37,7 +37,7 @@ searchBarEl[0].addEventListener("keypress", function (event) {
         dataArray = data.results;
         dataArray.forEach((element) => {
           console.log(element.id);
-          renderResults(element.title, element.id, element.title);
+          renderResults(element.title, element.id);
         });
       });
   }
