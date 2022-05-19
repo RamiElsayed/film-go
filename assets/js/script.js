@@ -75,6 +75,21 @@ const loadFromLS = (LSName) => {
   return arrayFromLS;
 };
 
+// Get movie details from TMDB
+const initialiseDescription = () => {
+  const movieID = loadFromLS("movieID")[0][1];
+  console.log(movieID);
+  const url = `https://api.themoviedb.org/3/movie/${movieID}?api_key=7c7537b799513b436eb6bed714d7edcc&language=en-US
+`;
+  fetch(url)
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      console.log(data);
+    });
+};
+
 window.onload = function () {
-  initializeLS();
+  initializeLS("movieID");
 };
