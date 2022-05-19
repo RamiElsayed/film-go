@@ -26,12 +26,55 @@
   padding-top: 75px;
 }
 
-@media screen and (max-width: 1022px) {
+
+@media screen and (max-width: 1108px) {
+  .navbar {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .navbar-brand {
+    width: fit-content;
+    display: flex;
+    justify-content: center;
+  }
+
+  header {
+    width: 100%;
+
+  }
+.navbar-end{
+  display: flex;
+  flex-direction: row;
+}
+  .navbar-menu {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+    background-color: black;
+  }
+
+  .buttons {
+    padding: 0px;
+  }
+
+  .navbar-dropdown {
+    display: none;
+  }
+
+  .navbar-item:hover {
+    display: block;
+  }
+}
+@media screen and (max-width: 768px) {
   .navbar {
     display: flex;
     flex-direction: column;
   }
-
+  .navbar-end{
+    flex-direction: column;
+  }
   .navbar-brand {
     width: fit-content;
     display: flex;
@@ -61,12 +104,18 @@
   .navbar-item:hover {
     display: block;
   }
+}
   /* Banner settings jeerjs */
+
   .custom-banner-image {
     background-size: cover;
     display: flex;
-    background-image: url(/images/Avatar/BG.png);
+    background-image: url("/images/Avatar/BG.png");
+    background-image: url(/images/AvatarBG.png);
+
   }
+@media screen and (max-width: 1022px) {
+
 
   .custom-btn-banner-size {
     min-width: 200px;
