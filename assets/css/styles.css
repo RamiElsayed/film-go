@@ -6,6 +6,59 @@
   --white: #ffffffff;
 }
 
+/* The sidepanel menu */
+.sidepanel {
+  height: 0;
+  width: 0; /* 0 width - change this with JavaScript */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Stay on top */
+  top: 0;
+  left: 0;
+  background-color: #111; /* Black*/
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 60px; /* Place content 60px from the top */
+  transition: 0.5s; /* 0.5 second transition effect to slide in the sidepanel */
+  display: block;
+}
+
+/* The sidepanel links */
+.sidepanel a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidepanel a:hover {
+  color: #f1f1f1;
+}
+
+/* Position and style the close button (top right corner) */
+.sidepanel .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+/* Style the button that is used to open the sidepanel */
+.openbtn {
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #111;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+}
+
+.openbtn:hover {
+  background-color: #444;
+}
+
 /* AboutMe Card AA */
 .card {
   width: 20%;
@@ -14,7 +67,6 @@
   display: flex;
   justify-content: center;
 }
-
 
 .filmgo-logo {
   height: 100%;
@@ -36,7 +88,6 @@
   padding-top: 75px;
 }
 
-
 @media screen and (max-width: 1108px) {
   .navbar {
     display: flex;
@@ -51,12 +102,11 @@
 
   header {
     width: 100%;
-
   }
-.navbar-end{
-  display: flex;
-  flex-direction: row;
-}
+  .navbar-end {
+    display: flex;
+    flex-direction: row;
+  }
   .navbar-menu {
     display: flex;
     flex-direction: row;
@@ -82,7 +132,7 @@
     display: flex;
     flex-direction: column;
   }
-  .navbar-end{
+  .navbar-end {
     flex-direction: column;
   }
   .navbar-brand {
@@ -115,18 +165,15 @@
     display: block;
   }
 }
-  /* Banner settings jeerjs */
+/* Banner settings jeerjs */
 
-  .custom-banner-image {
-    background-size: cover;
-    display: flex;
-    background-image: url("/images/Avatar/BG.png");
-    background-image: url(/images/AvatarBG.png);
-
-  }
+.custom-banner-image {
+  background-size: cover;
+  display: flex;
+  background-image: url("/images/Avatar/BG.png");
+  background-image: url(/images/AvatarBG.png);
+}
 @media screen and (max-width: 1022px) {
-
-
   .custom-btn-banner-size {
     min-width: 200px;
   }
