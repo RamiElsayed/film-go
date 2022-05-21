@@ -67,6 +67,7 @@ dropDownContainerEl[0].addEventListener("click", function (event) {
   }
 });
 
+//to do wish list
 // Initialise local storage.
 const initializeLS = () => {
   // Calling the schedule array from the local storage
@@ -83,7 +84,7 @@ const initializeLS = () => {
   }
 };
 
-// Saves key: value pair into local storage
+// wish list local storage function
 const saveToLS = (location, value) => {
   // Calls the local storage object.
   let arrayFromLS = JSON.parse(localStorage.getItem(location));
@@ -96,7 +97,7 @@ const saveToLS = (location, value) => {
   localStorage.setItem(location, JSON.stringify(arrayFromLS));
 };
 
-// This loads the array from the local storage
+// This loads the array from the local storage for wish list
 const loadFromLS = (LSName) => {
   // Getting the object from local storage.
   const arrayFromLS = Object.entries(JSON.parse(localStorage.getItem(LSName)));
@@ -104,21 +105,6 @@ const loadFromLS = (LSName) => {
   return arrayFromLS;
 };
 
-// Get movie details from TMDB
-const initialiseDescription = () => {
-  const movieID = loadFromLS("movieID")[0][1];
-  console.log(movieID);
-  const url =
-    "https://api.themoviedb.org/3/genre/movie/list?api_key=7c7537b799513b436eb6bed714d7edcc&language=en-US";
-  fetch(url)
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function (data) {
-      genresList(data.genres);
-      console.log(data);
-    });
-};
 
 window.onload = function () {
   initializeLS("movieID");
@@ -150,18 +136,6 @@ const genresList = () => {
         });
       });
     })};
-
-// const genresList = (data) => {
-//   data.forEach((genre, index) => {
-//     const genreButtons = document.querySelectorAll(".genreButton");
-//     genreButtons.forEach((genreButton) => {
-      
-//       if (genreButton.textContent === genre.name) {
-//         genreButton.setAttribute("data-id", genre.id);
-//       }
-//     });
-//   });
-// };
 
 initialiseDescription();
 
