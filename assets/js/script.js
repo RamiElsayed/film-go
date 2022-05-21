@@ -51,8 +51,8 @@ searchBarEl[0].addEventListener("keypress", function (event) {
           renderResults(element.title, element.id);
         });
       });
-  }
-});
+  })
+}});
 
 // This gets the movie Id and saves it into the local storage.
 dropDownContainerEl[0].addEventListener("click", function (event) {
@@ -149,19 +149,19 @@ const genresList = () => {
           }
         });
       });
-    });
+    })};
 
-const genresList = (data) => {
-  data.forEach((genre, index) => {
-    const genreButtons = document.querySelectorAll(".genreButton");
-    genreButtons.forEach((genreButton) => {
+// const genresList = (data) => {
+//   data.forEach((genre, index) => {
+//     const genreButtons = document.querySelectorAll(".genreButton");
+//     genreButtons.forEach((genreButton) => {
       
-      if (genreButton.textContent === genre.name) {
-        genreButton.setAttribute("data-id", genre.id);
-      }
-    });
-  });
-};
+//       if (genreButton.textContent === genre.name) {
+//         genreButton.setAttribute("data-id", genre.id);
+//       }
+//     });
+//   });
+// };
 
 initialiseDescription();
 
