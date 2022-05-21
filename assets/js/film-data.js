@@ -1,3 +1,7 @@
+const params = new URLSearchParams(window.location.search)
+const filmId = params.get('film-id');
+const filmTitle = params.get('film-title');
+
 const mainElem = document.querySelector("main");
 const videosListElem = document.getElementById("videos-container");
 
@@ -15,7 +19,6 @@ const embedYoutubeVideos = (searchTerm) => {
   searchYoutubeVideos(searchTerm)
     .then((response) => response.json())
     .then((data) => {
-      debugger;
       console.log(`youtube data: ${data.items.length}`);
       for (let i = 0; i < 3; i++) {
         const videoId = data.items[i].id.videoId;
@@ -35,13 +38,6 @@ const embedYoutubeVideos = (searchTerm) => {
 };
 
 
-embedYoutubeVideos("avatar");
+embedYoutubeVideos(filmTitle);
 
-const searchTerm = (LSName) => {
-    // Getting the object from local storage.
-    const arrayFromLS = Object.entries(JSON.parse(localStorage.getItem(LSName)));
-    console.log(arrayFromLS);
-    return arrayFromLS;
-  };
-embedYoutubeVideos(searchTerm("movietitle"));
 

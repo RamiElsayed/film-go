@@ -16,7 +16,7 @@ const renderDropDownMenu = () => {
 
 const renderResults = (title, id) => {
   const dropDownTitles = $("#dropdown-menu-titles");
-  const searchResult = `<a href='./top10.html?film-title=${title}&film-id=${id}' class="dropdown-item" movieTitle="${title}"movieId="${id}">
+  const searchResult = `<a href='./film-data.html?film-title=${title}&film-id=${id}' class="dropdown-item" movieTitle="${title}"movieId="${id}">
                         ${title}
                     </a>`;
   dropDownTitles.append(searchResult);
