@@ -13,6 +13,7 @@ const renderDropDownMenu = () => {
   const dropdownMenu = `<div class="dropdown-content" id="dropdown-menu-titles"></div>`;
   dropDownContainerEl.append(dropdownMenu);
 };
+
 const renderResults = (title, id) => {
   const dropDownTitles = $("#dropdown-menu-titles");
   const searchResult = `<a href='./thridPage.html' class="dropdown-item" movieTitle="${title}"movieId="${id}">
@@ -97,7 +98,8 @@ const loadFromLS = (LSName) => {
 const initialiseDescription = () => {
   const movieID = loadFromLS("movieID")[0][1];
   console.log(movieID);
-  const url = 'https://api.themoviedb.org/3/genre/movie/list?api_key=7c7537b799513b436eb6bed714d7edcc&language=en-US'
+  const url =
+    "https://api.themoviedb.org/3/genre/movie/list?api_key=7c7537b799513b436eb6bed714d7edcc&language=en-US";
   fetch(url)
     .then(function (response) {
       return response.json();
@@ -112,22 +114,16 @@ window.onload = function () {
   initializeLS("movieID");
 };
 
-
-const genresList = (data) => 
-{
-  
-   data.forEach((genre,index)=> {
-   const genreButtons =  document.querySelectorAll(".genreButton");
-   genreButtons.forEach((genreButton) => {
-    debugger
-        if (genreButton.textContent === genre.name) {
-          genreButton.setAttribute("data-id", genre.id);
-          
-        }
-   })
-
-   })
-}
+const genresList = (data) => {
+  data.forEach((genre, index) => {
+    const genreButtons = document.querySelectorAll(".genreButton");
+    genreButtons.forEach((genreButton) => {
+      if (genreButton.textContent === genre.name) {
+        genreButton.setAttribute("data-id", genre.id);
+      }
+    });
+  });
+};
 
 initialiseDescription();
 
@@ -142,4 +138,3 @@ function closeNav() {
   document.getElementById("mySidepanel").style.width = "0";
   document.getElementById("mySidepanel").style.height = "0";
 }
-
