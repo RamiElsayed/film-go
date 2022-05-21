@@ -1,63 +1,46 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <!-- load MUI -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
-    />
-    <script
-      src="https://kit.fontawesome.com/207fe72a87.js"
-      crossorigin="anonymous"
-    ></script>
-    <link
-      rel="stylesheet"
-      href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css"
-    />
-    <link
-      href="//cdn.muicss.com/mui-0.10.3/css/mui.min.css"
-      rel="stylesheet"
-      type="text/css"
-    />
-    <link rel="stylesheet" href="./assets/css/styles.css" />
-    <script src="//cdn.muicss.com/mui-0.10.3/js/mui.min.js"></script>
-  </head>
 
-  <body>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- load MUI -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" />
+  <script src="https://kit.fontawesome.com/207fe72a87.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css" />
+  <link href="//cdn.muicss.com/mui-0.10.3/css/mui.min.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="./assets/css/styles.css" />
+  <script src="//cdn.muicss.com/mui-0.10.3/js/mui.min.js"></script>
+</head>
 
-    <header class="navbar has dropdown is-active">
-      <div class="navbar-menu">
-        <a class="navbar-brand">
-          <img class="filmgo-logo" src="./images/filmgo.png" alt="Film-go" />
-        </a>
-      </div>
-      <div class="navbar-menu">
-        <div class="navbar-end">
-          <a class="navbar-item"> Home </a>
-
-          <div class="navbar-item has-dropdown is-hoverable">
-            <a class="navbar-link navbar-item"> Genres </a>
-
-            <div class="navbar-dropdown navbar-end">
-              <a class="navbar-item"> Action </a>
-              <a class="navbar-item"> Comedy </a>
-              <a class="navbar-item"> Horror </a>
-              <a class="navbar-item"> Romantic </a>
-              <a class="navbar-item"> Thriller </a>
-              <hr class="navbar-divider" />
-              <a class="navbar-item"> Show All </a>
-            </div>
+<body>
+  <!-- This is the navbar -->
+  <header class="navbar has dropdown is-active">
+    <div class="navbar-menu">
+      <a href="#" class="navbar-brand">
+        <img class="filmgo-logo" src="./images/FilmGo-logo.png" alt="Film-go" />
+      </a>
+    </div>
+    <div class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item"> Home </a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link navbar-item"> Genres </a>
+          <div class="navbar-dropdown navbar-end">
+            <a class="navbar-item" href="./top10.html"> Action </a>
+            <a class="navbar-item"> Adventure </a>
+            <a class="navbar-item"> Animation </a>
+            <a class="navbar-item"> Comedy </a>
+            <a class="navbar-item"> Crime </a>
+            <hr class="navbar-divider" />
+            <a class="navbar-item" href="#all-genres"> Show All </a>
           </div>
-
-          <a class="navbar-item"> About Us </a>
         </div>
-
+        <a class="navbar-item" href=".card"> About Us </a>
+      </div>
+      <div>
         <div>
-          
-<div> 
           <div id="mySidepanel" class="sidepanel">
             <a class="closebtn" onclick="closeNav()">&times;</a>
             <a>Wishlist Item 1</a>
@@ -65,27 +48,32 @@
             <a>Wishlist Item 3</a>
             <a>Wishlist Item 4</a>
           </div>
-          
-          <a class="navbar-item"><button class="openbtn button is-warning" onclick="openNav()"> Wishlist</button> </a>
+          <a class="navbar-item"><button class="button openbtn button is-warning" onclick="openNav()"> Wishlist</button> </a>
         </div>
       </div>
-      </div>
-    </header>
+    </div>
+  </header>
 
- 
-    <div id="banner-parent-container ">
-      <section class="hero is-large is-info custom-banner-image">
-        <div class="hero-body">
-  
-          <div id="banner-content-container" class="container has-text-centered">
-            <h1 class="title is-1 is-spaced has-text-black  has-text-weight-bold is-family-primary is-uppercase" >Welcome to FILM-GO</h1>   
-          
-  
-          <div class="m-6 ">
-            <input class="input is-rounded" type="text" placeholder="Search for a film">
+
+  <div id="banner-parent-container ">
+    <section class="hero is-large is-info custom-banner-image">
+      <div class="hero-body">
+
+        <div id="banner-content-container" class="container has-text-centered">
+          <h1 class="title is-1 is-spaced has-text-black  has-text-weight-bold is-family-primary is-uppercase">Welcome
+            to FILM-GO</h1>
+
+          <div id="dropdown-container" class="dropdown is-active">
+            <div class="m-6 dropdown-trigger">
+              <input id="searchbar-dynamic" class="input is-rounded is-medium" type="text"
+                placeholder="Search for a film" aria-controls="dropdown-menu">
+            </div>
+
+            <div class="dropdown-menu" id="dropdown-menu" role="menu">
+            </div>
           </div>
-  
           <div class="scrolling-wrapper" class="m-6">
+
 
             <button class="button is-primary is-light is-outlined is-large mx-3 is-rounded is-large custom-btn-banner-size genreButton">Action</button>
             <button class="button is-success is-light is-outlined is-large mx-3 is-rounded is-large custom-btn-banner-size genreButton">Adventure</button>
@@ -113,11 +101,85 @@
            <button class="button is-danger is-light is-outlined is-large mx-3 is-rounded is-large custom-btn-banner-size">Thriller</button>
            <button class="button is-danger is-light is-outlined is-large mx-3 is-rounded is-large custom-btn-banner-size">Comedy</button>
 
+
+            <button
+              class="button is-primary is-light is-outlined is-large mx-3 is-rounded is-large custom-btn-banner-size genreButton"><a
+                href="">Action</a></button>
+            <button
+              class="button is-success is-light is-outlined is-large mx-3 is-rounded is-large custom-btn-banner-size genreButton"><a
+                href="">Adventure</a></button>
+            <button
+              class="button is-warning is-light is-outlined is-large mx-3 is-rounded is-large custom-btn-banner-size genreButton"><a
+                href="">Animation</a></button>
+            <button
+              class="button is-primary is-light is-outlined is-large mx-3 is-rounded is-large is-rounded is-large custom-btn-banner-size genreButton"><a
+                href="">Comedy</a></button>
+            <button
+              class="button is-success is-light is-outlined is-large mx-3 is-rounded is-large custom-btn-banner-size genreButton"><a
+                href="">Crime</a></button>
+            <button
+              class="button is-warning is-light is-outlined is-large mx-3 is-rounded is-large custom-btn-banner-size genreButton"><a
+                href="">Documentary</a></button>
+            <button
+              class="button is-primary is-light is-outlined is-large mx-3 is-rounded is-large custom-btn-banner-size genreButton"><a
+                href="">Drama</a></button>
+            <button
+              class="button is-success is-light is-outlined is-large mx-3 is-rounded is-large is-rounded is-large custom-btn-banner-size genreButton"><a
+                href="">Family</a></button>
+            <button
+              class="button is-warning is-light is-outlined is-large mx-3 is-rounded is-large custom-btn-banner-size genreButton"><a
+                href="">Fantasy</a></button>
+            <button
+              class="button is-success is-light is-outlined is-large mx-3 is-rounded is-large custom-btn-banner-size genreButton"><a
+                href="">History</a></button>
+            <button
+              class="button is-danger is-light is-outlined is-large mx-3 is-rounded is-large custom-btn-banner-size genreButton"><a
+                href="">Horror</a></button>
+            <button
+              class="button is-primary is-light is-outlined is-large mx-3 is-rounded is-large custom-btn-banner-size genreButton"><a
+                href="">Music</a></button>
+            <button
+              class="button is-success is-light is-outlined is-large mx-3 is-rounded is-large custom-btn-banner-size genreButton"><a
+                href="">Mystery</a></button>
+            <button
+              class="button is-success is-light is-outlined is-large mx-3 is-rounded is-large custom-btn-banner-size genreButton"><a
+                href="">Romance</a></button>
+            <button
+              class="button is-danger is-light is-outlined is-large mx-3 is-rounded is-large is-rounded is-large custom-btn-banner-size genreButton"><a
+                href="">Science Fiction</a></button>
+            <button
+              class="button is-primary is-light is-outlined is-large mx-3 is-rounded is-large custom-btn-banner-size genreButton"><a
+                href="">TV Movie</a></button>
+            <button
+              class="button is-danger is-light is-outlined is-large mx-3 is-rounded is-large custom-btn-banner-size genreButton"><a
+                href="">Thriller</a></button>
+            <button
+              class="button is-danger is-light is-outlined is-large mx-3 is-rounded is-large custom-btn-banner-size genreButton"><a
+                href="">War</a></button>
+            <button
+              class="button is-success is-light is-outlined is-large mx-3 is-rounded is-large is-rounded is-large custom-btn-banner-size genreButton"><a
+                href="">Western</a></button>
+            <button
+              class="button is-primary is-light is-outlined is-large mx-3 is-rounded is-large custom-btn-banner-size"><a
+                href="">Horror</a></button>
+            <button
+              class="button is-success is-light is-outlined is-large mx-3 is-rounded is-large custom-btn-banner-size"><a
+                href="">Sci-Fi</a></button>
+            <button
+              class="button is-warning is-light is-outlined is-large mx-3 is-rounded is-large custom-btn-banner-size"><a
+                href="">Action</a></button>
+            <button
+              class="button is-danger is-light is-outlined is-large mx-3 is-rounded is-large custom-btn-banner-size"><a
+                href="">Romantic</a></button>
+            <button
+              class="button is-danger is-light is-outlined is-large mx-3 is-rounded is-large custom-btn-banner-size"><a
+                href="">Thriller</a></button>
+            <button
+              class="button is-danger is-light is-outlined is-large mx-3 is-rounded is-large custom-btn-banner-size"><a
+                href="">Comedy</a></button>
+
           </div>
-        
-        
-      </section>
-      </div>
+    </section>
 
     <!-- example content -->
     <div class="mui-container">
@@ -126,24 +188,128 @@
         <button class="mui-btn mui-btn--primary mui-btn--raised">
           My Button
         </button>
+
       </div>
     </div>
-    <!-- Creating AboutMe Card Aisha  -->
-    <div class="card AboutMeCard-customWidth has-text-centered"> 
-            <p class="title is-4">Aisha Abdi</p>
-     
-        <h4>My role: front-end engineer</h4>
-        <p>I am 19 years old.I am currently enrolled in a coding bootcamp.</p>
-        <div class="leftside">
+
+
+    <!--Create AboutMe Card Rami-->
+    <div class="card">
+      <div class="card-body">
+        <figure class="image is-128x128">
+          <img class="is-rounded"
+            src="https://www.pngfind.com/pngs/m/518-5183747_cool-guy-smaller-than-128x128-pixels-hd-png.png">
+        </figure>
+        <div class="card-content">
+          <h3 class="title is-4">Rami Elsayed</h3>
+          <h4>My role: X</h4>
+          <p>Insert information about yourself.</p>
+          <div class="leftside">
             <div class="socialmediaicons">
               <div><a href="https://www.linkedin.com/in/aisha-abdi-30674423a/"><i class="fa fa-linkedin"></i></div></a>
               <div><a href="https://github.com/Aishaabdi1"><i class="fa fa-github"></i></div></a>
             </div>
+          </div>
         </div>
       </div>
     </div>
-    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
-    <script src="./assets/js/script.js"></script>
-  </body>
+
+
+    <!--Create AboutMe Card Jaswant-->
+    <div class="card">
+      <div class="card-body">
+        <figure class="image is-128x128">
+          <img class="is-rounded"
+            src="https://www.pngfind.com/pngs/m/518-5183747_cool-guy-smaller-than-128x128-pixels-hd-png.png">
+        </figure>
+        <div class="card-content">
+          <h3 class="title is-4">Jaswant Jeers</h3>
+          <h4>My role: X</h4>
+          <p>Insert information about yourself.</p>
+          <div class="leftside">
+            <div class="socialmediaicons">
+              <div><a href="https://www.linkedin.com/in/aisha-abdi-30674423a/"><i class="fa fa-linkedin"></i></div></a>
+              <div><a href="https://github.com/Aishaabdi1"><i class="fa fa-github"></i></div></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Creating AboutMe Card Aisha  -->
+    <main>
+      <div class="card">
+        <div class="card-body">
+          <figure class="image is-128x128">
+            <img class="is-rounded"
+              src="https://www.pngfind.com/pngs/m/518-5183747_cool-guy-smaller-than-128x128-pixels-hd-png.png">
+          </figure>
+          <div class="card-content">
+            <h3 class="title is-4">Aisha Abdi</h3>
+            <!--Insert information about yourself-->
+            <h4>My role: front-end engineer</h4>
+            <p>I am 19 years old. I'm currently enrolled in a coding bootcamp.</p>
+            <!--Link your linkedin and -->
+            <div class="leftside">
+              <div class="socialmediaicons">
+                <div><a href="https://www.linkedin.com/in/aisha-abdi-30674423a/"><i class="fa fa-linkedin"></i></div>
+                </a>
+                <div><a href="https://github.com/Aishaabdi1"><i class="fa fa-github"></i></div></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!--Creating AboutMe Card Faiban-->
+      <div class="card">
+        <div class="card-body">
+          <figure class="image is-128x128">
+            <img class="is-rounded"
+              src="https://www.pngfind.com/pngs/m/518-5183747_cool-guy-smaller-than-128x128-pixels-hd-png.png">
+          </figure>
+          <div class="card-content">
+            <h3 class="title is-4">Fabian Sarango Guayllas</h3>
+            <h4>My role: X</h4>
+            <p>Insert information about yourself.</p>
+            <div class="leftside">
+              <div class="socialmediaicons">
+                <div><a href="https://www.linkedin.com/in/aisha-abdi-30674423a/"><i class="fa fa-linkedin"></i></div>
+                </a>
+                <div><a href="https://github.com/Aishaabdi1"><i class="fa fa-github"></i></div></a>
+              </div>
+            </div>
+          </div>
+          <!-- Create AboutMe Card Sachin-->
+          <div class="card">
+            <div class="card-body">
+              <figure class="image is-128x128">
+                <img class="is-rounded"
+                  src="https://www.pngfind.com/pngs/m/518-5183747_cool-guy-smaller-than-128x128-pixels-hd-png.png">
+              </figure>
+              <div class="card-content">
+                <h3 class="title is-4">Sachin Basandrai</h3>
+                <h4>My role: X </h4>
+                <p>Insert information about yourself.</p>
+                <div class="leftside">
+                  <div class="socialmediaicons">
+                    <div><a href="https://www.linkedin.com/in/aisha-abdi-30674423a/"><i class="fa fa-linkedin"></i>
+                    </div>
+                    </a>
+                    <div><a href="https://github.com/Aishaabdi1"><i class="fa fa-github"></i></div></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+
+          <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+          <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+          <script src="./assets/js/script.js"></script>
+</body>
+
 </html>

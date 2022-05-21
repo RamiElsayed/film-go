@@ -13,6 +13,7 @@ const renderDropDownMenu = () => {
   const dropdownMenu = `<div class="dropdown-content" id="dropdown-menu-titles"></div>`;
   dropDownContainerEl.append(dropdownMenu);
 };
+
 const renderResults = (title, id) => {
   const dropDownTitles = $("#dropdown-menu-titles");
   const searchResult = `<a href='./top10.html?film-title=${title}&film-id=${id}' class="dropdown-item" movieTitle="${title}"movieId="${id}">
@@ -21,7 +22,10 @@ const renderResults = (title, id) => {
   dropDownTitles.append(searchResult);
 };
 
+
 //Onclick function for searchbar, if enter key is presed it will send a fetch request.
+
+// Onclick function for searchbar, if enter key is presed it will send a fetch request.
 
 searchBarEl[0].addEventListener("keypress", function (event) {
   dropDownContainerEl.empty();
@@ -34,9 +38,16 @@ searchBarEl[0].addEventListener("keypress", function (event) {
         return response.json();
       })
       .then(function (data) {
+
         
         dataArray = data.results;
         dataArray.forEach((element) => {
+
+        console.log(data);
+        dataArray = data.results;
+        dataArray.forEach((element) => {
+          console.log(element.id);
+
           renderResults(element.title, element.id);
         });
       });
@@ -44,17 +55,17 @@ searchBarEl[0].addEventListener("keypress", function (event) {
 });
 
 // This gets the movie Id and saves it into the local storage.
-// dropDownContainerEl[0].addEventListener("click", function (event) {
-//   let target = event.target;
-//   const dropDownTitles = $("#dropdown-menu-titles");
-//   if (target.tagName === "A") {
-//     const movieID = target.getAttribute("movieID");
-//     const movieTitle = target.getAttribute("movietitle");
-//     saveToLS("movieID", movieID);
-//     saveToLS("movietitle", movieTitle);
-//     dropDownTitles.remove();
-//   }
-// });
+dropDownContainerEl[0].addEventListener("click", function (event) {
+  let target = event.target;
+  const dropDownTitles = $("#dropdown-menu-titles");
+  if (target.tagName === "A") {
+    const movieID = target.getAttribute("movieID");
+    const movieTitle = target.getAttribute("movietitle");
+    saveToLS("movieID", movieID);
+    saveToLS("movietitle", movieTitle);
+    dropDownTitles.remove();
+  }
+});
 
 // Initialise local storage.
 const initializeLS = () => {
@@ -113,6 +124,7 @@ window.onload = function () {
   initializeLS("movieID");
 };
 
+
 const genreButtonClick = (id) => {
   const url = `./top10.html?genre-id=${id}`;
   window.location.href = url;
@@ -138,6 +150,17 @@ const genresList = () => {
         });
       });
     });
+
+const genresList = (data) => {
+  data.forEach((genre, index) => {
+    const genreButtons = document.querySelectorAll(".genreButton");
+    genreButtons.forEach((genreButton) => {
+      
+      if (genreButton.textContent === genre.name) {
+        genreButton.setAttribute("data-id", genre.id);
+      }
+    });
+  });
 };
 
 initialiseDescription();
