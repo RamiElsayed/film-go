@@ -13,6 +13,7 @@ const renderDropDownMenu = () => {
   const dropdownMenu = `<div class="dropdown-content" id="dropdown-menu-titles"></div>`;
   dropDownContainerEl.append(dropdownMenu);
 };
+
 const renderResults = (title, id) => {
   const dropDownTitles = $("#dropdown-menu-titles");
   const searchResult = `<a href='./thridPage.html' class="dropdown-item" movieTitle="${title}"movieId="${id}">
@@ -117,6 +118,7 @@ const genresList = (data) => {
   data.forEach((genre, index) => {
     const genreButtons = document.querySelectorAll(".genreButton");
     genreButtons.forEach((genreButton) => {
+
       debugger;
       if (genreButton.textContent === genre.name) {
         genreButton.setAttribute("data-id", genre.id);
