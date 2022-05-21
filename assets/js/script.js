@@ -97,7 +97,8 @@ const loadFromLS = (LSName) => {
 const initialiseDescription = () => {
   const movieID = loadFromLS("movieID")[0][1];
   console.log(movieID);
-  const url = 'https://api.themoviedb.org/3/genre/movie/list?api_key=7c7537b799513b436eb6bed714d7edcc&language=en-US'
+  const url =
+    "https://api.themoviedb.org/3/genre/movie/list?api_key=7c7537b799513b436eb6bed714d7edcc&language=en-US";
   fetch(url)
     .then(function (response) {
       return response.json();
@@ -112,22 +113,32 @@ window.onload = function () {
   initializeLS("movieID");
 };
 
+const genreButtonClick = (id) => {
+  const url = `./top10.html?genre-id=${id}`;
+  window.location.href = url;
+};
 
-const genresList = (data) => 
-{
-  
-   data.forEach((genre,index)=> {
-   const genreButtons =  document.querySelectorAll(".genreButton");
-   genreButtons.forEach((genreButton) => {
-    debugger
-        if (genreButton.textContent === genre.name) {
-          genreButton.setAttribute("data-id", genre.id);
-          
-        }
-   })
+const genresList = () => {
+  const genreButtons = document.querySelectorAll(".genreButton");
+  const url =
+    "https://api.themoviedb.org/3/genre/movie/list?api_key=7c7537b799513b436eb6bed714d7edcc&language=en-US";
 
-   })
-}
+  fetch(url)
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      data.genres.forEach((genre) => {
+        genreButtons.forEach((genreButton) => {
+          if (genreButton.textContent === genre.name) {
+            genreButton.addEventListener("click", () => {
+              genreButtonClick(genre.id);
+            });
+          }
+        });
+      });
+    });
+};
 
 initialiseDescription();
 
@@ -142,4 +153,3 @@ function closeNav() {
   document.getElementById("mySidepanel").style.width = "0";
   document.getElementById("mySidepanel").style.height = "0";
 }
-

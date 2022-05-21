@@ -1,6 +1,6 @@
 
 const params = new URLSearchParams(window.location.search)
-const genreId = params.get('genreId');
+const genreId = params.get('genre-id');
 console.log(genreId);
 const genresListApi = `https://api.themoviedb.org/3/genre/movie/list?api_key=7c7537b799513b436eb6bed714d7edcc&language=en-US`;
 
