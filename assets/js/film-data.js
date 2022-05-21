@@ -34,4 +34,14 @@ const embedYoutubeVideos = (searchTerm) => {
     });
 };
 
+
 embedYoutubeVideos("avatar");
+=======
+const searchTerm = (LSName) => {
+    // Getting the object from local storage.
+    const arrayFromLS = Object.entries(JSON.parse(localStorage.getItem(LSName)));
+    console.log(arrayFromLS);
+    return arrayFromLS;
+  };
+embedYoutubeVideos(searchTerm("movietitle"));
+
