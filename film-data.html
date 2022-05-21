@@ -1,12 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>film data and youtube videos</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-    <script src="https://kit.fontawesome.com/207fe72a87.js" crossorigin="anonymous"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+    />
+    <script
+      src="https://kit.fontawesome.com/207fe72a87.js"
+      crossorigin="anonymous"
+    ></script>
     <link
       rel="stylesheet"
       href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css"
@@ -18,67 +24,74 @@
     />
     <link rel="stylesheet" href="./assets/css/styles.css" />
     <script src="//cdn.muicss.com/mui-0.10.3/js/mui.min.js"></script>
-</head>
-<body>
-  <header class="navbar has dropdown is-active">
-    <div class="navbar-menu">
-      <a href="#" class="navbar-brand">
-        <img class="filmgo-logo" src="./images/FilmGo-logo.png" alt="Film-go" />
-      </a>
-    </div>
-    <div class="navbar-menu">
-      <div class="navbar-end">
-        <a class="navbar-item"> Home </a>
-        <div class="navbar-item has-dropdown is-hoverable">
-          <a class="navbar-link navbar-item"> Genres </a>
-          <div class="navbar-dropdown navbar-end">
-            <a class="navbar-item" href="./top10.html"> Action </a>
-            <a class="navbar-item"> Adventure </a>
-            <a class="navbar-item"> Animation </a>
-            <a class="navbar-item"> Comedy </a>
-            <a class="navbar-item"> Crime </a>
-            <hr class="navbar-divider" />
-            <a class="navbar-item" href="#all-genres"> Show All </a>
-          </div>
-        </div>
-        <a class="navbar-item" href=".card"> About Us </a>
+  </head>
+  <body>
+    <header class="navbar has dropdown is-active">
+      <div class="navbar-menu">
+        <a href="#" class="navbar-brand">
+          <img
+            class="filmgo-logo"
+            src="./images/FilmGo-logo.png"
+            alt="Film-go"
+          />
+        </a>
       </div>
-      <div>
+      <div class="navbar-menu">
+        <div class="navbar-end">
+          <a class="navbar-item"> Home </a>
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link navbar-item"> Genres </a>
+            <div class="navbar-dropdown navbar-end">
+              <a class="navbar-item" href="./top10.html"> Action </a>
+              <a class="navbar-item"> Adventure </a>
+              <a class="navbar-item"> Animation </a>
+              <a class="navbar-item"> Comedy </a>
+              <a class="navbar-item"> Crime </a>
+              <hr class="navbar-divider" />
+              <a class="navbar-item" href="#all-genres"> Show All </a>
+            </div>
+          </div>
+          <a class="navbar-item" href=".card"> About Us </a>
+        </div>
         <div>
-          <div id="mySidepanel" class="sidepanel">
-            <a class="closebtn" onclick="closeNav()">&times;</a>
-            <a>Wishlist Item 1</a>
-            <a>Wishlist Item 2</a>
-            <a>Wishlist Item 3</a>
-            <a>Wishlist Item 4</a>
+          <div>
+            <div id="mySidepanel" class="sidepanel">
+              <a class="closebtn" onclick="closeNav()">&times;</a>
+              <a>Wishlist Item 1</a>
+              <a>Wishlist Item 2</a>
+              <a>Wishlist Item 3</a>
+              <a>Wishlist Item 4</a>
+            </div>
+            <a class="navbar-item"
+              ><button
+                class="button openbtn button is-warning"
+                onclick="openNav()"
+              >
+                Wishlist
+              </button>
+            </a>
           </div>
-          <a class="navbar-item"><button class="button openbtn button is-warning" onclick="openNav()"> Wishlist</button> </a>
         </div>
       </div>
-    </div>
-  </header>
-     <main>
+    </header>
+    <main>
       <section>
         <div class="container mt-6 container-maxWidth">
           <div
             id="main-Container"
             class="container is-flex is-flex-direction-column mb-6"
           >
-            <h1 class="mx-auto pb-4 has-text-weight-bold">Movie Name</h1>
-  
+            <h1 id="movieTitle" class="mx-auto pb-4 has-text-weight-bold"></h1>
+
             <!-- Trailer and poster -->
             <div id="moviDataFigureContainer-Display">
               <figure class="mx-auto">
-                <img
-                  src="https://image.tmdb.org/t/p/original//fjaoD0ZfPOf2C5BalCziPUaf4Zk.jpg"
-                  alt=""
-                  style="height: 100%"
-                />
+                <img id="backdrop" alt="" style="height: 100%" />
               </figure>
               <div class="moviDataFigureTrailer">
                 <iframe
+                  id="trailerContainer"
                   class="trailer"
-                  src="https://www.youtube.com/embed/a8Gx8wiNbs8"
                   title="YouTube video player"
                   frameborder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -89,26 +102,26 @@
             <div
               class="is-flex is-flex-direction-column is-justify-content-end is-align-content-end mt-3"
             >
-              <p>
+              <div>
                 <span class="has-text-weight-semibold">Director:</span>
-                Lorem ipsum dolor sit amet.
-              </p>
-              <p>
-                <span class="has-text-weight-semibold">Genres:</span> Lorem ipsum
-                dolor sit amet.
-              </p>
+                <p id="movieDirector">Lorem ipsum dolor sit amet.</p>
+              </div>
+              <div>
+                <span class="has-text-weight-semibold">Genres:</span>
+                <p id="movieGenres">Lorem ipsum dolor sit amet.</p>
+              </div>
             </div>
-  
+
             <div class="container is-flex is-flex-direction-column mb-4">
               <h3 class="has-text-weight-semibold">Story Line</h3>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit
-                fugit aut, amet commodi quibusdam ex aperiam, minus eaque
-                voluptatum deserunt, praesentium fugiat! Voluptatibus autem, ut et
-                obcaecati blanditiis minus, ea perspiciatis doloribus id sint amet
-                consequatur corporis repellendus accusantium iure, tenetur quod
-                provident fugit nostrum. Aliquid laudantium incidunt perferendis
-                excepturi.
+              <p id="storyLine">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Suscipit fugit aut, amet commodi quibusdam ex aperiam, minus
+                eaque voluptatum deserunt, praesentium fugiat! Voluptatibus
+                autem, ut et obcaecati blanditiis minus, ea perspiciatis
+                doloribus id sint amet consequatur corporis repellendus
+                accusantium iure, tenetur quod provident fugit nostrum. Aliquid
+                laudantium incidunt perferendis excepturi.
               </p>
             </div>
             <div
@@ -144,12 +157,10 @@
           </div>
         </div>
       </section>
-     </main>
-     <footer>
-
-     </footer>
+    </main>
+    <footer></footer>
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
     <script src="./assets/js/film-data.js"></script>
-</body>
+  </body>
 </html>
