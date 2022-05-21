@@ -118,8 +118,7 @@ const genresList = (data) => {
   data.forEach((genre, index) => {
     const genreButtons = document.querySelectorAll(".genreButton");
     genreButtons.forEach((genreButton) => {
-
-      debugger;
+      
       if (genreButton.textContent === genre.name) {
         genreButton.setAttribute("data-id", genre.id);
       }
