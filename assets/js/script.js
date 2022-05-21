@@ -22,39 +22,39 @@ const renderResults = (title, id) => {
 };
 
 // Onclick function for searchbar, if enter key is presed it will send a fetch request.
-// searchBarEl[0].addEventListener("keypress", function (event) {
-//   dropDownContainerEl.empty();
-//   renderDropDownMenu();
-//   if (event.keyCode === 13) {
-//     const title = searchBarEl.val();
-//     const url = `https://imdb-api.com/en/API/SearchMovie/k_voxajyfz/${title}`;
-//     fetch(url)
-//       .then(function (response) {
-//         return response.json();
-//       })
-//       .then(function (data) {
-//         console.log(data);
-//         dataArray = data.results;
-//         dataArray.forEach((element) => {
-//           console.log(element.id);
-//           renderResults(element.title, element.id);
-//         });
-//       });
-//   }
-// });
+searchBarEl[0].addEventListener("keypress", function (event) {
+  dropDownContainerEl.empty();
+  renderDropDownMenu();
+  if (event.keyCode === 13) {
+    const title = searchBarEl.val();
+    const url = `https://imdb-api.com/en/API/SearchMovie/k_voxajyfz/${title}`;
+    fetch(url)
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (data) {
+        console.log(data);
+        dataArray = data.results;
+        dataArray.forEach((element) => {
+          console.log(element.id);
+          renderResults(element.title, element.id);
+        });
+      });
+  }
+});
 
 // This gets the movie Id and saves it into the local storage.
-// dropDownContainerEl[0].addEventListener("click", function (event) {
-//   let target = event.target;
-//   const dropDownTitles = $("#dropdown-menu-titles");
-//   if (target.tagName === "A") {
-//     const movieID = target.getAttribute("movieID");
-//     const movieTitle = target.getAttribute("movietitle");
-//     saveToLS("movieID", movieID);
-//     saveToLS("movietitle", movieTitle);
-//     dropDownTitles.remove();
-//   }
-// });
+dropDownContainerEl[0].addEventListener("click", function (event) {
+  let target = event.target;
+  const dropDownTitles = $("#dropdown-menu-titles");
+  if (target.tagName === "A") {
+    const movieID = target.getAttribute("movieID");
+    const movieTitle = target.getAttribute("movietitle");
+    saveToLS("movieID", movieID);
+    saveToLS("movietitle", movieTitle);
+    dropDownTitles.remove();
+  }
+});
 
 // Initialise local storage.
 const initializeLS = () => {
@@ -97,7 +97,8 @@ const loadFromLS = (LSName) => {
 const initialiseDescription = () => {
   const movieID = loadFromLS("movieID")[0][1];
   console.log(movieID);
-  const url = 'https://api.themoviedb.org/3/genre/movie/list?api_key=7c7537b799513b436eb6bed714d7edcc&language=en-US'
+  const url =
+    "https://api.themoviedb.org/3/genre/movie/list?api_key=7c7537b799513b436eb6bed714d7edcc&language=en-US";
   fetch(url)
     .then(function (response) {
       return response.json();
@@ -112,22 +113,17 @@ window.onload = function () {
   initializeLS("movieID");
 };
 
-
-const genresList = (data) => 
-{
-  
-   data.forEach((genre,index)=> {
-   const genreButtons =  document.querySelectorAll(".genreButton");
-   genreButtons.forEach((genreButton) => {
-    debugger
-        if (genreButton.textContent === genre.name) {
-          genreButton.setAttribute("data-id", genre.id);
-          
-        }
-   })
-
-   })
-}
+const genresList = (data) => {
+  data.forEach((genre, index) => {
+    const genreButtons = document.querySelectorAll(".genreButton");
+    genreButtons.forEach((genreButton) => {
+      debugger;
+      if (genreButton.textContent === genre.name) {
+        genreButton.setAttribute("data-id", genre.id);
+      }
+    });
+  });
+};
 
 initialiseDescription();
 
@@ -142,4 +138,3 @@ function closeNav() {
   document.getElementById("mySidepanel").style.width = "0";
   document.getElementById("mySidepanel").style.height = "0";
 }
-
