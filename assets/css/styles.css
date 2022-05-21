@@ -180,19 +180,25 @@
 .border-black {
   border: 2px solid rgba(0, 0, 0, 0.87);
 }
-#movieData-YoutubeVideosContainer {
+.movieData-YoutubeVideosContainer {
   display: flex;
   justify-content: space-between;
   align-content: space-between;
   border-radius: 10px;
 }
 
-.movieData-YoutubeVideos {
+.movieData-YoutubeVideos,
+.thumbnail-sizing {
   flex: 0 0 30%;
   min-width: 200px;
-  height: 200px;
-
+  margin-bottom: 1rem;
   background-color: rebeccapurple;
+}
+@media screen and (max-width: 1150px) {
+  
+  .movieData-YoutubeVideos,
+.thumbnail-sizing {
+  flex: 0 0 45%;
 }
 
 @media screen and (max-width: 768px) {
@@ -224,6 +230,18 @@
     right: 0;
     width: 100%;
     height: 100%;
+  }
+  .is-flex {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+  .thumbnail-sizing {
+    flex: 0 0 90%;
+  }
+  .thumbnail-sizing > img {
+    width: 100%;
   }
 
   /* YOutuve */
