@@ -15,33 +15,33 @@ const renderDropDownMenu = () => {
 };
 const renderResults = (title, id) => {
   const dropDownTitles = $("#dropdown-menu-titles");
-  const searchResult = `<a href='./thridPage.html' class="dropdown-item" movieTitle="${title}"movieId="${id}">
+  const searchResult = `<a href='./top10.html?film-title=${title}&film-id=${id}' class="dropdown-item" movieTitle="${title}"movieId="${id}">
                         ${title}
                     </a>`;
   dropDownTitles.append(searchResult);
 };
 
-// Onclick function for searchbar, if enter key is presed it will send a fetch request.
-// searchBarEl[0].addEventListener("keypress", function (event) {
-//   dropDownContainerEl.empty();
-//   renderDropDownMenu();
-//   if (event.keyCode === 13) {
-//     const title = searchBarEl.val();
-//     const url = `https://imdb-api.com/en/API/SearchMovie/k_voxajyfz/${title}`;
-//     fetch(url)
-//       .then(function (response) {
-//         return response.json();
-//       })
-//       .then(function (data) {
-//         console.log(data);
-//         dataArray = data.results;
-//         dataArray.forEach((element) => {
-//           console.log(element.id);
-//           renderResults(element.title, element.id);
-//         });
-//       });
-//   }
-// });
+//Onclick function for searchbar, if enter key is presed it will send a fetch request.
+
+searchBarEl[0].addEventListener("keypress", function (event) {
+  dropDownContainerEl.empty();
+  renderDropDownMenu();
+  if (event.keyCode === 13) {
+    const title = searchBarEl.val();
+    const url = `https://imdb-api.com/en/API/SearchMovie/k_voxajyfz/${title}`;
+    fetch(url)
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (data) {
+        
+        dataArray = data.results;
+        dataArray.forEach((element) => {
+          renderResults(element.title, element.id);
+        });
+      });
+  }
+});
 
 // This gets the movie Id and saves it into the local storage.
 // dropDownContainerEl[0].addEventListener("click", function (event) {
