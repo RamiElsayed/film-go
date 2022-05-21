@@ -5,9 +5,30 @@
   --platinum: #e5e5e5ff;
   --white: #ffffffff;
 }
+
+main{
+  padding: 100px 10px;
+}
 /* AboutMe Card AA */
 .card {
   width: 20%;
+  max-height: 310px;
+  float: left;
+}
+.card-body{
+  display: flex;
+   flex-direction: column;
+   align-items: center;
+  position:relative;
+  bottom: 70px; 
+}
+/* .image{
+  position:relative;
+  bottom: 70px;
+} */
+.avatarImage{
+ width: 100px;
+ height:100px;
 }
 .socialmediaicons {
   display: flex;
