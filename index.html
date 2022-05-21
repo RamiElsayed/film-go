@@ -68,6 +68,133 @@
             </div>
           </div>
         </div>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- load MUI -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+    />
+    <script
+      src="https://kit.fontawesome.com/207fe72a87.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css"
+    />
+    <link
+      href="//cdn.muicss.com/mui-0.10.3/css/mui.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="./assets/css/styles.css" />
+    <script src="//cdn.muicss.com/mui-0.10.3/js/mui.min.js"></script>
+  </head>
+
+  <body>
+
+    <header class="navbar has dropdown is-active">
+      <div class="navbar-menu">
+        <a class="navbar-brand">
+          <img class="filmgo-logo" src="./images/filmgo.png" alt="Film-go" />
+        </a>
+      </div>
+      <div class="navbar-menu">
+        <div class="navbar-end">
+          <a class="navbar-item"> Home </a>
+
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link navbar-item"> Genres </a>
+
+            <div class="navbar-dropdown navbar-end">
+              <a class="navbar-item"> Action </a>
+              <a class="navbar-item"> Comedy </a>
+              <a class="navbar-item"> Horror </a>
+              <a class="navbar-item"> Romantic </a>
+              <a class="navbar-item"> Thriller </a>
+              <hr class="navbar-divider" />
+              <a class="navbar-item"> Show All </a>
+            </div>
+          </div>
+
+          <a class="navbar-item"> About Us </a>
+        </div>
+
+        <div>
+          
+<div> 
+          <div id="mySidepanel" class="sidepanel">
+            <a class="closebtn" onclick="closeNav()">&times;</a>
+            <a>Wishlist Item 1</a>
+            <a>Wishlist Item 2</a>
+            <a>Wishlist Item 3</a>
+            <a>Wishlist Item 4</a>
+          </div>
+          
+          <a class="navbar-item"><button class="openbtn button is-warning" onclick="openNav()"> Wishlist</button> </a>
+        </div>
+      </div>
+      </div>
+    </header>
+
+ 
+    <div id="banner-parent-container ">
+      <section class="hero is-large is-info custom-banner-image">
+        <div class="hero-body">
+  
+          <div id="banner-content-container" class="container has-text-centered">
+            <h1 class="title is-1 is-spaced has-text-black  has-text-weight-bold is-family-primary is-uppercase" >Welcome to FILM-GO</h1>   
+          
+  
+          <div class="m-6 ">
+            <input class="input is-rounded" type="text" placeholder="Search for a film">
+          </div>
+  
+          <div class="scrolling-wrapper" class="m-6">
+
+            <button class="button is-primary is-light is-outlined is-large mx-3 is-rounded is-large custom-btn-banner-size genreButton"><a href="">Action</a></button>
+            <button class="button is-success is-light is-outlined is-large mx-3 is-rounded is-large custom-btn-banner-size genreButton"><a href="">Adventure</a></button>
+            <button class="button is-warning is-light is-outlined is-large mx-3 is-rounded is-large custom-btn-banner-size genreButton"><a href="">Animation</a></button>
+           <button class="button is-primary is-light is-outlined is-large mx-3 is-rounded is-large is-rounded is-large custom-btn-banner-size genreButton"><a href="">Comedy</a></button>
+           <button class="button is-success is-light is-outlined is-large mx-3 is-rounded is-large custom-btn-banner-size genreButton"><a href="">Crime</a></button>
+           <button class="button is-warning is-light is-outlined is-large mx-3 is-rounded is-large custom-btn-banner-size genreButton"><a href="">Documentary</a></button>
+           <button class="button is-primary is-light is-outlined is-large mx-3 is-rounded is-large custom-btn-banner-size genreButton"><a href="">Drama</a></button>
+           <button class="button is-success is-light is-outlined is-large mx-3 is-rounded is-large is-rounded is-large custom-btn-banner-size genreButton"><a href="">Family</a></button>
+           <button class="button is-warning is-light is-outlined is-large mx-3 is-rounded is-large custom-btn-banner-size genreButton"><a href="">Fantasy</a></button>
+           <button class="button is-success is-light is-outlined is-large mx-3 is-rounded is-large custom-btn-banner-size genreButton"><a href="">History</a></button>
+           <button class="button is-danger is-light is-outlined is-large mx-3 is-rounded is-large custom-btn-banner-size genreButton"><a href="">Horror</a></button>
+           <button class="button is-primary is-light is-outlined is-large mx-3 is-rounded is-large custom-btn-banner-size genreButton"><a href="">Music</a></button>
+            <button class="button is-success is-light is-outlined is-large mx-3 is-rounded is-large custom-btn-banner-size genreButton"><a href="">Mystery</a></button>
+            <button class="button is-success is-light is-outlined is-large mx-3 is-rounded is-large custom-btn-banner-size genreButton"><a href="">Romance</a></button>
+           <button class="button is-danger is-light is-outlined is-large mx-3 is-rounded is-large is-rounded is-large custom-btn-banner-size genreButton"><a href="">Science Fiction</a></button>
+           <button class="button is-primary is-light is-outlined is-large mx-3 is-rounded is-large custom-btn-banner-size genreButton"><a href="">TV Movie</a></button>
+           <button class="button is-danger is-light is-outlined is-large mx-3 is-rounded is-large custom-btn-banner-size genreButton"><a href="">Thriller</a></button>
+           <button class="button is-danger is-light is-outlined is-large mx-3 is-rounded is-large custom-btn-banner-size genreButton"><a href="">War</a></button>
+           <button class="button is-success is-light is-outlined is-large mx-3 is-rounded is-large is-rounded is-large custom-btn-banner-size genreButton"><a href="">Western</a></button>
+            <button class="button is-primary is-light is-outlined is-large mx-3 is-rounded is-large custom-btn-banner-size"><a href="">Horror</a></button>
+            <button class="button is-success is-light is-outlined is-large mx-3 is-rounded is-large custom-btn-banner-size"><a href="">Sci-Fi</a></button>
+            <button class="button is-warning is-light is-outlined is-large mx-3 is-rounded is-large custom-btn-banner-size"><a href="">Action</a></button>
+           <button class="button is-danger is-light is-outlined is-large mx-3 is-rounded is-large custom-btn-banner-size"><a href="">Romantic</a></button>
+           <button class="button is-danger is-light is-outlined is-large mx-3 is-rounded is-large custom-btn-banner-size"><a href="">Thriller</a></button>
+           <button class="button is-danger is-light is-outlined is-large mx-3 is-rounded is-large custom-btn-banner-size"><a href="">Comedy</a></button>
+
+          </div>
+        
+        
+      </section>
+      </div>
+
+    <!-- example content -->
+    <div class="mui-container">
+      <div class="mui-panel">
+        <h1>My Title</h1>
+        <button class="mui-btn mui-btn--primary mui-btn--raised">
+          My Button
+        </button>
+
       </div>
     </div>
 
