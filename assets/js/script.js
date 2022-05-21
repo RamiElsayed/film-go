@@ -16,13 +16,17 @@ const renderDropDownMenu = () => {
 
 const renderResults = (title, id) => {
   const dropDownTitles = $("#dropdown-menu-titles");
-  const searchResult = `<a href='./thridPage.html' class="dropdown-item" movieTitle="${title}"movieId="${id}">
+  const searchResult = `<a href='./top10.html?film-title=${title}&film-id=${id}' class="dropdown-item" movieTitle="${title}"movieId="${id}">
                         ${title}
                     </a>`;
   dropDownTitles.append(searchResult);
 };
 
+
+//Onclick function for searchbar, if enter key is presed it will send a fetch request.
+
 // Onclick function for searchbar, if enter key is presed it will send a fetch request.
+
 searchBarEl[0].addEventListener("keypress", function (event) {
   dropDownContainerEl.empty();
   renderDropDownMenu();
@@ -34,10 +38,16 @@ searchBarEl[0].addEventListener("keypress", function (event) {
         return response.json();
       })
       .then(function (data) {
+
+        
+        dataArray = data.results;
+        dataArray.forEach((element) => {
+
         console.log(data);
         dataArray = data.results;
         dataArray.forEach((element) => {
           console.log(element.id);
+
           renderResults(element.title, element.id);
         });
       });
@@ -113,6 +123,33 @@ const initialiseDescription = () => {
 window.onload = function () {
   initializeLS("movieID");
 };
+
+
+const genreButtonClick = (id) => {
+  const url = `./top10.html?genre-id=${id}`;
+  window.location.href = url;
+};
+
+const genresList = () => {
+  const genreButtons = document.querySelectorAll(".genreButton");
+  const url =
+    "https://api.themoviedb.org/3/genre/movie/list?api_key=7c7537b799513b436eb6bed714d7edcc&language=en-US";
+
+  fetch(url)
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      data.genres.forEach((genre) => {
+        genreButtons.forEach((genreButton) => {
+          if (genreButton.textContent === genre.name) {
+            genreButton.addEventListener("click", () => {
+              genreButtonClick(genre.id);
+            });
+          }
+        });
+      });
+    });
 
 const genresList = (data) => {
   data.forEach((genre, index) => {
