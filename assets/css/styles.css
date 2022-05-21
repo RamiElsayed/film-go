@@ -209,3 +209,71 @@ button {
     height: 100%;
   }
 }
+
+/*top 10 page card deck parent div*/
+.CardDeck {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Top 10 page parent card container*/
+.custom-movie-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  border-width: 20px;
+  border: pink;
+  margin: 20px;
+}
+
+/* Div for movie card*/
+.custom-movie-card {
+  position: relative;
+}
+
+/*Div for wishlist anchor on card*/
+
+.custom-wishlist-card {
+  position: absolute;
+  bottom: 1%;
+  padding: 5%;
+  background-color: black;
+  color: white;
+  border-radius: 7%;
+}
+
+.custom-wishlist-card:hover {
+  transform: scale(1.2);
+}
+
+/*Div for watch now button*/
+.custom-watch-card {
+  position: absolute;
+  bottom: 1%;
+  right: 0%;
+  padding: 5%;
+  background-color: black;
+  color: white;
+  border-radius: 7%;
+}
+.custom-watch-card:hover {
+  transform: scale(1.5);
+}
+
+/*Css settings for card title*/
+.custom-card-name {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  background: transparent;
+  top: 0%;
+  right: 0%;
+  padding: 5%;
+  color: white;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-size: large;
+  border-color: whitesmoke;
+}
