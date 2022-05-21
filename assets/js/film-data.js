@@ -4,7 +4,7 @@ const videosListElem = document.getElementById("videos-container");
 const embedYoutubeVideos = (searchTerm) => {
   function searchYoutubeVideos(searchTerm) {
     return fetch(
-      `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=${searchTerm}&key=AIzaSyBhTjmkiNU9nfU2EIRNhCQl6R9RYNSf8wc`
+      `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=${searchTerm}&key=AIzaSyAWgu9o-CD36HzXYrRVsgjkJsvogQ4kCWw`
     );
   }
 
@@ -15,12 +15,14 @@ const embedYoutubeVideos = (searchTerm) => {
   searchYoutubeVideos(searchTerm)
     .then((response) => response.json())
     .then((data) => {
+      debugger;
       console.log(`youtube data: ${data.items.length}`);
-      for (let i = 0; i < 5; i++) {
+      for (let i = 0; i < 3; i++) {
         const videoId = data.items[i].id.videoId;
         const filmYoutubeVideo = document.createElement("a");
         filmYoutubeVideo.setAttribute("target", "_blank");
         filmYoutubeVideo.setAttribute("class", "thumbnail-sizing");
+
         filmYoutubeVideo.href = linkYouTubeVideo(videoId);
 
         const filmImage = document.createElement("img");
