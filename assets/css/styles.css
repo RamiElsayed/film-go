@@ -106,6 +106,10 @@ main{
   font-weight: bold;
   padding: 20px;
 }
+.navbar-item>button{
+    margin: auto;
+
+}
 
 .buttons {
   padding-top: 75px;
