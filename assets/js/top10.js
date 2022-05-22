@@ -2,18 +2,25 @@
 const params = new URLSearchParams(window.location.search)
 const genreId = params.get('genre-id');
 
+
+
 const genresListApi = `https://api.themoviedb.org/3/genre/movie/list?api_key=7c7537b799513b436eb6bed714d7edcc&language=en-US`;
 
+
+// this one is to fetch data from any api link
 const getDataFromApi = async (apiLink) => {
     const response = await fetch(apiLink);
     return response.json();
 }
 
+
+// this one is to get only 10 films out of tmdb
 const getTop10Movies = async (genreId) => {
     const url = `https://api.themoviedb.org/3/discover/movie?api_key=7c7537b799513b436eb6bed714d7edcc&with_genres=${genreId}`;
     const movies = await getDataFromApi(url);
     return movies.results.slice(0, 10);
 }
+
 
 loadData = async () => {
     const topMovies = await getTop10Movies(genreId);
@@ -74,4 +81,17 @@ console.log(table);
 // }
 
 // table.appendChild(createCard(5));
+
+/* Set the width of the sidebar to 250px (show it) */
+function openNav() {
+    document.getElementById("mySidepanel").style.width = "250px";
+    document.getElementById("mySidepanel").style.height = "100%";
+  }
+  
+  /* Set the width of the sidebar to 0 (hide it) */
+  function closeNav() {
+    document.getElementById("mySidepanel").style.width = "0";
+    document.getElementById("mySidepanel").style.height = "0";
+  }
+  
 
