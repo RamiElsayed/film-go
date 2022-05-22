@@ -5,6 +5,8 @@
   --platinum: #e5e5e5ff;
   --white: #ffffffff;
   --border-radius: 10px;
+  --unhover-icon-color: rgba(252, 162, 17, 0.4);
+  --hover-icon-color: rgba(252, 162, 17);
 }
 
 html {
@@ -426,7 +428,7 @@ body {
   margin: auto;
 }
 .CardDeck img {
-  border-radius: 50px;
+  border-radius: var(--border-radius);
 }
 
 /* Top 10 page title*/
@@ -442,6 +444,7 @@ body {
   margin: 20px;
   box-shadow: 0 0 20px 2px #a0a0a0;
   border-radius: var(--border-radius);
+  transition: transform 300ms;
 }
 .custom-movie-container:hover {
   transform: scale(1.01);
@@ -458,7 +461,7 @@ body {
 /*Css settings for card title*/
 .custom-card-name {
   position: absolute;
-  background-color: black;
+  background-color: rgba(0, 0, 0, 0.9);
   border-radius: var(--border-radius);
   width: 100%;
   text-align: center;
@@ -471,6 +474,9 @@ body {
   font-size: x-large;
   font-weight: bold;
   border-color: whitesmoke;
+}
+.custom-card-name > h3 {
+  margin: 0 1rem;
 }
 
 .fa {
@@ -495,8 +501,8 @@ body {
   border-radius: var(--border-radius);
   color: black;
   font-weight: bold;
-  top: 0%;
-  right: 0%;
+  top: -5%;
+  left: -6%;
   z-index: 2;
 }
 
@@ -506,10 +512,20 @@ body {
   position: absolute;
   bottom: 0%;
   padding: 5%;
-  background-color: #fca311ff;
-  color: white;
+  background-color: var(--unhover-icon-color);
   border-radius: var(--border-radius);
   font-weight: bold;
+  transition: all 400ms;
+}
+.custom-wishlist-card > a {
+  color: white;
+  transition: all 600ms;
+}
+/* Transitions */
+.custom-wishlist-card:hover,
+.custom-wishlist-card:hover > a {
+  background-color: var(--hover-icon-color);
+  color: red;
 }
 
 .custom-wishlist-card:hover {
@@ -522,13 +538,25 @@ body {
   bottom: 0%;
   right: 0%;
   padding: 5%;
-  background-color: #fca311ff;
+  background-color: var(--unhover-icon-color);
   color: white;
   border-radius: var(--border-radius);
   font-weight: bold;
-  min-width: 131px;
   text-align: center;
+    transition: all 400ms;
+
 }
-.custom-watch-card:hover {
+.custom-watch-card > a{
+  color: white;
+    transition: all 600ms;
+
+}
+
+.custom-watch-card:hover,
+.custom-watch-card:hover > a {
+    background-color: var(--hover-icon-color);
+  color: red;
+
+}
   transform: scale(1.05);
 }
