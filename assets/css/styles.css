@@ -266,9 +266,10 @@ button {
 
   .scrolling-wrapper {
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     overflow-x: auto;
-    height: 200px;
+    justify-content: center;
+
   }
   .custom-btn-banner-size {
     flex: 0 0 auto;
