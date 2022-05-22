@@ -48,16 +48,16 @@ const loadData = async () => {
 //This function is supposed to take a single tmdb id and return a single imdb id. 6977 --> tt423440
 
 
-// const getImdbIds = async () => {
-//     const tmdbGenres = (await getDataFromApi(genresListApi)).genres;
-//     const imdbGenreIds = (await Promise.all(tmdbGenres.map(async x => {
-//         const current = await getDataFromApi(`https://api.themoviedb.org/3/movie/${x.id}/external_ids?api_key=7c7537b799513b436eb6bed714d7edcc`);
-//         return current.imdb_id;
-//     }))).filter(x => x);
-//     console.log(imdbGenreIds);
-// }
+const getImdbIds = async () => {
+    const tmdbIds = (await loadData());
+    const imdbIds = (await Promise.all(tmdbIds.map(async x => {
+        const current = await getDataFromApi(`https://api.themoviedb.org/3/movie/${x}/external_ids?api_key=7c7537b799513b436eb6bed714d7edcc`);
+        return current.imdb_id;
+    }))).filter(x => x);
+    console.log(imdbIds);
+}
 loadData();
-//getImdbIds();
+getImdbIds();
 
 
 /*select the table div*/
