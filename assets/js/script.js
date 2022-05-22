@@ -112,20 +112,21 @@ window.onload = function () {
 
 
 const genreButtonClick = (id) => {
-  const url = `./top10.html?genre-id=${id}`;
-  window.location.href = url;
+  const top10Url = `./top10.html?genre-id=${id}`;
+  window.location.href = top10Url;
 };
 
 const genresList = () => {
   const genreButtons = document.querySelectorAll(".genreButton");
-  const url =
+  const apiUrl =
     "https://api.themoviedb.org/3/genre/movie/list?api_key=7c7537b799513b436eb6bed714d7edcc&language=en-US";
 
-  fetch(url)
+  fetch(apiUrl)
     .then(function (response) {
       return response.json();
     })
     .then(function (data) {
+
       data.genres.forEach((genre) => {
         genreButtons.forEach((genreButton) => {
           if (genreButton.textContent === genre.name) {
@@ -136,9 +137,7 @@ const genresList = () => {
         });
       });
     })};
-
-initialiseDescription();
-
+    
 /* Set the width of the sidebar to 250px (show it) */
 function openNav() {
   document.getElementById("mySidepanel").style.width = "350px";
@@ -150,3 +149,4 @@ function closeNav() {
   document.getElementById("mySidepanel").style.width = "0";
   document.getElementById("mySidepanel").style.height = "0";
 }
+genresList();
