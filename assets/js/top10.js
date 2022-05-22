@@ -4,6 +4,26 @@ const cardDeckEl = $("#cardDeck");
 
 const genresListApi = `https://api.themoviedb.org/3/genre/movie/list?api_key=7c7537b799513b436eb6bed714d7edcc&language=en-US`;
 
+// Renders Cards
+// This renders the cards
+const renderFilmCard = (imgLink, title, index, trailerLink) => {
+  const cardEl = `<div class="custom-movie-container">
+        <div class="custom-movie-card">
+          <img
+            src="https://image.tmdb.org/t/p/original/${imgLink}"
+            alt="movie card test image"
+            width="300px"
+            height="400px"
+          />
+          <div class="custom-card-number">${index}</div>
+          <div class="custom-wishlist-card"><a><i class="fa-solid fa-heart"></i></a></div>
+          <div class="custom-watch-card"><a href="https://www.youtube.com/watch/${trailerLink}" target="_blank"><i class="fa-solid fa-circle-play"></i></a></div>
+          <div class="custom-card-name"><h3>${title}</h3></div>
+        </div>
+      </div>`;
+  cardDeckEl.append(cardEl);
+};
+
 // this one is to fetch data from any api link
 const getDataFromApi = async (apiLink) => {
   const response = await fetch(apiLink);
@@ -14,7 +34,6 @@ const getDataFromApi = async (apiLink) => {
 const getTop10Movies = async (genreId) => {
   const url = `https://api.themoviedb.org/3/discover/movie?api_key=7c7537b799513b436eb6bed714d7edcc&with_genres=${genreId}`;
   const movies = await getDataFromApi(url);
-  console.log(movies);
   return movies.results.slice(0, 10);
 };
 
@@ -30,49 +49,65 @@ const getTop10Tmdb = async () => {
 // This is my code Fabian
 const getPosters = async () => {
   const posters = await getTop10Movies(genreId);
-  for (let index = 0; index < posters.length; index++) {
+  for (let index = 0; index < 10; index++) {
     posters[index] = [
       posters[index].poster_path,
       posters[index].title,
       posters[index].id,
     ];
   }
-  console.log(posters);
-
   return posters;
 };
 
 // getTop10Tmdb();
-
 const appendFilmDataToHTML = async () => {
   const arrayMovieData = await getPosters();
   for (let i = 0; i < arrayMovieData.length; i++) {
-    console.log(arrayMovieData[i][2]);
+    // const trailer = await addTrailer(arrayMovieData[i][2]);
+    // const trailerVideoID = addTrailer(arrayMovieData[i].id);
+    // console.log(arrayMovieData[i][2]);
+    const trailerVideoID = await passID(arrayMovieData[i][2]);
     const index = i + 1;
-    renderFilmCard(arrayMovieData[i][0], arrayMovieData[i][1], index);
+    renderFilmCard(
+      arrayMovieData[i][0],
+      arrayMovieData[i][1],
+      index,
+      trailerVideoID
+    );
   }
 };
 
-appendFilmDataToHTML();
-// This renders the cards
-const renderFilmCard = (imgLink, title, index) => {
-  const cardEl = `<div class="custom-movie-container">
-        <div class="custom-movie-card">
-          <img
-            src="https://image.tmdb.org/t/p/original/${imgLink}"
-            alt="movie card test image"
-            width="300px"
-            height="400px"
-          />
-          <div class="custom-card-number">${index}</div>
-          <div class="custom-wishlist-card"><a><i class="fa-solid fa-heart"></i></a></div>
-          <div class="custom-watch-card"><a><i class="fa-solid fa-circle-play"></i></a></div>
-          <div class="custom-card-name"><h3>${title}</h3></div>
-        </div>
-      </div>`;
-  cardDeckEl.append(cardEl);
-  console.log("hi");
+const getTrailerLink = async (filmId) => {
+  function getTrailerID(filmId) {
+    return fetch(
+      `https://imdb-api.com/en/API/YouTubeTrailer/k_voxajyfz/${filmId}`
+    );
+  }
+  const trailer = await getTrailerID(filmId);
+  return trailer.json();
 };
+// This converts the TMDB-ID to IMDB-ID
+const convertToImdbID = async (TmdbID) => {
+  function getTrailerID(TmdbID) {
+    return fetch(
+      `https://api.themoviedb.org/3/movie/${TmdbID}/external_ids?api_key=7c7537b799513b436eb6bed714d7edcc`
+    );
+  }
+  const id = await getTrailerID(TmdbID);
+  return id.json();
+};
+const addTrailer = async (filmId) => {
+  const videoIDs = await convertToImdbID(filmId); //These video ids are for several websites
+  const trailerID = await getTrailerLink(videoIDs.imdb_id);
+  return trailerID.videoId;
+};
+
+const passID = async (tmbdID) => {
+  const trailerVideoID = await addTrailer(tmbdID);
+  return trailerVideoID;
+};
+
+// Here ends fabian's code
 
 // /* function 1 matching genre to id*/
 // const matchGenreId = (genre) => {
@@ -106,7 +141,6 @@ const getImdbIds = async () => {
 
 /*select the table div*/
 const table = document.getElementsByClassName("table")[0];
-console.log(table);
 
 /*Create Card Div JS*/
 // function createCard(number) {
@@ -123,6 +157,9 @@ console.log(table);
 // }
 
 // table.appendChild(createCard(5));
+
+// This functions are on page loaded
+appendFilmDataToHTML();
 
 /* Set the width of the sidebar to 250px (show it) */
 function openNav() {
