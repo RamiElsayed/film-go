@@ -492,7 +492,7 @@ body {
   font-weight: bold;
   top: 0%;
   right: 0%;
-  z-index: 999;
+  z-index: 2;
 }
 
 /*Div for wishlist anchor on card*/
