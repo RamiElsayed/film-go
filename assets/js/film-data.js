@@ -51,7 +51,6 @@ const embedYoutubeVideos = (searchTerm) => {
 const getDescription = (filmId) => {
   function getMovieData(filmId) {
     return fetch(
-      // `https://api.themoviedb.org/3/movie/${filmId}?api_key=7c7537b799513b436eb6bed714d7edcc&language=en-US`,
       `https://imdb-api.com/en/API/Title/k_aaaaaaaa/${filmId}/Trailer,Ratings,`
     );
   }
@@ -89,12 +88,9 @@ const getTrailerLink = (filmId) => {
     });
 };
 
-const createArrayFromApiData = (data) => {
-  fo;
-};
 
-getDescription("tt0499549");
-getTrailerLink("tt0499549");
+getDescription(filmId);
+getTrailerLink(filmId);
 
 // console.log(data.genres.length);
 // var arr = [];
