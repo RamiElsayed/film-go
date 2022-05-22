@@ -259,6 +259,28 @@ button {
   background-image: url("/images/Avatar/BG.png");
   background-image: url(/images/AvatarBG.png);
 }
+
+#dropdown-container{
+  width: 65%;
+}
+
+#dropdown-container > .searchBar-customWidth{
+  width: 100%;
+}
+#dropdown-container > .m-6{
+  margin-bottom: 0;
+}
+
+#dropdown-menu{
+  width: 100%;
+}
+
+#dropdown-menu > #dropdown-menu-titles{
+  width: 95%;
+  margin: auto;
+  border-radius: 15px;
+}
+
 @media screen and (max-width: 1022px) {
   .custom-btn-banner-size {
     min-width: 200px;
