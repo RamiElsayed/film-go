@@ -51,7 +51,7 @@ const embedYoutubeVideos = (searchTerm) => {
 const getDescription = (filmId) => {
   function getMovieData(filmId) {
     return fetch(
-      `https://imdb-api.com/en/API/Title/k_aaaaaaaa/${filmId}/Trailer,Ratings,`
+      `https://imdb-api.com/en/API/Title/k_voxajyfz/${filmId}/Trailer,Ratings,`
     );
   }
   getMovieData(filmId)
@@ -72,7 +72,7 @@ const getDescription = (filmId) => {
 const getTrailerLink = (filmId) => {
   function getTrailerID(filmId) {
     return fetch(
-      `https://imdb-api.com/en/API/YouTubeTrailer/k_aaaaaaaa/${filmId}`
+      `https://imdb-api.com/en/API/YouTubeTrailer/k_voxajyfz/${filmId}`
     );
   }
   getTrailerID(filmId)
@@ -87,7 +87,6 @@ const getTrailerLink = (filmId) => {
       );
     });
 };
-
 
 getDescription(filmId);
 getTrailerLink(filmId);
