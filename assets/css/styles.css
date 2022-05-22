@@ -259,6 +259,26 @@ button {
   background-image: url("/images/Avatar/BG.png");
   background-image: url(/images/AvatarBG.png);
 }
+
+/* This is for the search bar width */
+#dropdown-container{
+  width: 65%;
+}
+
+#dropdown-container > .searchBar-customWidth{
+  width: 100%;
+}
+/* This is for the list of movies in the dropdown list */
+#dropdown-menu{
+  width: 100%;
+}
+
+#dropdown-menu > #dropdown-menu-titles{
+  width: 95%;
+  margin: auto;
+  border-radius: 15px;
+}
+
 @media screen and (max-width: 1022px) {
   .custom-btn-banner-size {
     min-width: 200px;
@@ -284,6 +304,12 @@ button {
     overflow-x: none;
     height: 100%;
   }
+
+  /* This is for the search bar width */
+#dropdown-container{
+  width: 95%;
+}
+
 }
 
 /* This is for the Third page - Fabio */
