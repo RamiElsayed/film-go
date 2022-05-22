@@ -6,6 +6,9 @@
   --white: #ffffffff;
 }
 
+.block{
+  padding: 7rem 0;
+}
 
 main{
   padding: 100px 10px;
@@ -65,10 +68,33 @@ main{
   background-color: #444;
 }
 /* AboutMe Card AA */
+.aboutUs{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.aboutUs h2{
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 4rem;
+}
+
+.card-Container{
+  max-width: 1150px;
+  margin: auto;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+}
 .card {
-  width: 20%;
+  flex: 0 0 30%;
+  /* width: 20%; */
   max-height: 310px;
   float: left;
+  margin-bottom: 7rem;
 }
 .card-body{
   display: flex;
@@ -89,6 +115,29 @@ main{
   display: flex;
   justify-content: center;
 }
+@media screen and (max-width: 1108px) {
+  .card {
+      flex: 0 0 45%;
+
+  }
+}
+
+@media screen and (max-width: 880px) {
+  .card {
+      flex: 0 0 70%;
+      max-width: 400px;
+
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .card {
+      flex: 0 0 95%;
+      max-width: 400px;
+
+  }
+}
+
 
 
 .filmgo-logo {
