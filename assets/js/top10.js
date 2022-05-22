@@ -21,28 +21,25 @@ const getTop10Movies = async (genreId) => {
     return movies.results.slice(0, 10);
 }
 
-
-loadData = async () => {
+// on load we get 10 films
+const loadData = async () => {
     const topMovies = await getTop10Movies(genreId);
-    console.log(topMovies);
-}
-
-loadData();
-
-
-
-
-
-/* function 1 matching genre to id*/
-const matchGenreId = (genre) => {
-    const data = getDataFromApi(genresListApi);
-    for (let index = 0; index < data.length; index++) {
-       if (data[index].name === genre) {
-           return data[index].id;
-       }
+    for (let index = 0; index < topMovies.length; index++) {
+        topMovies[index] = topMovies[index].id;
     }
+    console.log(topMovies);
+    return topMovies
 }
 
+// /* function 1 matching genre to id*/
+// const matchGenreId = (genre) => {
+//     const data = getDataFromApi(genresListApi);
+//     for (let index = 0; index < data.length; index++) {
+//        if (data[index].name === genre) {
+//            return data[index].id;
+//        }
+//     }
+// }
 
 
 /* function 2 get the IMDB id from comparing to TMDB id*/
@@ -51,7 +48,7 @@ const matchGenreId = (genre) => {
 //This function is supposed to take a single tmdb id and return a single imdb id. 6977 --> tt423440
 
 
-// const loadData = async () => {
+// const getImdbIds = async () => {
 //     const tmdbGenres = (await getDataFromApi(genresListApi)).genres;
 //     const imdbGenreIds = (await Promise.all(tmdbGenres.map(async x => {
 //         const current = await getDataFromApi(`https://api.themoviedb.org/3/movie/${x.id}/external_ids?api_key=7c7537b799513b436eb6bed714d7edcc`);
@@ -60,6 +57,7 @@ const matchGenreId = (genre) => {
 //     console.log(imdbGenreIds);
 // }
 loadData();
+//getImdbIds();
 
 
 /*select the table div*/
