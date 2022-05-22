@@ -7,6 +7,10 @@
   --border-radius: 10px;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 .block {
   padding: 7rem 0;
 }
@@ -248,6 +252,7 @@ button {
   display: flex;
   background-image: url("/images/Avatar/BG.png");
   background-image: url(/images/AvatarBG.png);
+  clip-path: polygon(0 0, 100% 0, 100% 93%, 0% 100%);
 }
 
 /* This is for the search bar width */
