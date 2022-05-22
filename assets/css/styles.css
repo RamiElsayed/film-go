@@ -338,7 +338,7 @@ button {
   .movieData-YoutubeVideos {
     flex: 0 0 100%;
   }
-
+} /*Added this line it might cause bugs }*/
 /*top 10 page card deck parent div*/
 .CardDeck {
   display: flex;
@@ -406,4 +406,3 @@ button {
   font-size: large;
   border-color: whitesmoke;
 }
-
