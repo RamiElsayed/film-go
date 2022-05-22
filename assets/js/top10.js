@@ -22,7 +22,7 @@ const getTop10Movies = async (genreId) => {
 }
 
 // on load we get 10 films
-const loadData = async () => {
+const getTop10Tmdb = async () => {
     const topMovies = await getTop10Movies(genreId);
     for (let index = 0; index < topMovies.length; index++) {
         topMovies[index] = topMovies[index].id;
@@ -49,14 +49,14 @@ const loadData = async () => {
 
 
 const getImdbIds = async () => {
-    const tmdbIds = (await loadData());
+    const tmdbIds = (await getTop10Tmdb());
     const imdbIds = (await Promise.all(tmdbIds.map(async x => {
         const current = await getDataFromApi(`https://api.themoviedb.org/3/movie/${x}/external_ids?api_key=7c7537b799513b436eb6bed714d7edcc`);
         return current.imdb_id;
     }))).filter(x => x);
     console.log(imdbIds);
 }
-loadData();
+getTop10Tmdb();
 getImdbIds();
 
 
@@ -64,7 +64,7 @@ getImdbIds();
 const table = document.getElementsByClassName("table")[0];
 console.log(table);
 
-/*Create Card Div  JS*/
+/*Create Card Div JS*/
 // function createCard(number) {
 //   const card = document.createElement("div");
 //   card.className = "card";
