@@ -27,11 +27,63 @@
   </head>
 
   <body>
+    <!-- Navbar -->
+    <header class="navbar has dropdown is-active">
+      <div class="navbar-menu">
+        <a href="#" class="navbar-brand">
+          <img
+            class="filmgo-logo"
+            src="./images/FilmGo-logo.png"
+            alt="Film-go"
+          />
+        </a>
+      </div>
+      <div class="navbar-menu">
+        <div class="navbar-end">
+          <a class="navbar-item"> Home </a>
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link navbar-item"> Genres </a>
+            <div class="navbar-dropdown navbar-end">
+              <a class="navbar-item" href="./top10.html"> Action </a>
+              <a class="navbar-item"> Adventure </a>
+              <a class="navbar-item"> Animation </a>
+              <a class="navbar-item"> Comedy </a>
+              <a class="navbar-item"> Crime </a>
+              <hr class="navbar-divider" />
+              <a class="navbar-item" href="#all-genres"> Show All </a>
+            </div>
+          </div>
+          <a class="navbar-item" href=".card"> About Us </a>
+        </div>
+        <div>
+          <div>
+            <div id="mySidepanel" class="sidepanel">
+              <a class="closebtn" onclick="closeNav()">&times;</a>
+              <a>Wishlist Item 1</a>
+              <a>Wishlist Item 2</a>
+              <a>Wishlist Item 3</a>
+              <a>Wishlist Item 4</a>
+            </div>
+            <a class="navbar-item"
+              ><button
+                class="button openbtn button is-warning"
+                onclick="openNav()"
+              >
+                Wishlist
+              </button>
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
 
     <!-- Start of card deck to be rendered -->
     <div>
-      <h1 class="has-text-centered is-size-1 has-text-weight-bold">
-        Top Movies in
+      <h1
+        id="top10movies"
+        class="has-text-centered is-size-1 has-text-weight-bold"
+      >
+        Top 10 Movies in Genre
       </h1>
     </div>
     <div class="CardDeck">
@@ -44,7 +96,7 @@
             width="300px"
             height="400px"
           />
-
+          <div class="custom-card-number">1</div>
           <div class="custom-wishlist-card"><a>Add to Wishlist</a></div>
           <div class="custom-watch-card"><a>Watch Trailer</a></div>
           <div class="custom-card-name">Film Title</div>
@@ -59,7 +111,7 @@
             width="300px"
             height="400px"
           />
-
+          <div class="custom-card-number">2</div>
           <div class="custom-wishlist-card"><a>Add to Wishlist</a></div>
           <div class="custom-watch-card"><a>Watch Trailer</a></div>
           <div class="custom-card-name">Film Title</div>
@@ -74,7 +126,7 @@
             width="300px"
             height="400px"
           />
-
+          <div class="custom-card-number">3</div>
           <div class="custom-wishlist-card"><a>Add to Wishlist</a></div>
           <div class="custom-watch-card"><a>Watch Trailer</a></div>
           <div class="custom-card-name">Film Title</div>
@@ -89,7 +141,7 @@
             width="300px"
             height="400px"
           />
-
+          <div class="custom-card-number">4</div>
           <div class="custom-wishlist-card"><a>Add to Wishlist</a></div>
           <div class="custom-watch-card"><a>Watch Trailer</a></div>
           <div class="custom-card-name">Film Title</div>
@@ -104,7 +156,7 @@
             width="300px"
             height="400px"
           />
-
+          <div class="custom-card-number">5</div>
           <div class="custom-wishlist-card"><a>Add to Wishlist</a></div>
           <div class="custom-watch-card"><a>Watch Trailer</a></div>
           <div class="custom-card-name">Film Title</div>
@@ -119,7 +171,7 @@
             width="300px"
             height="400px"
           />
-
+          <div class="custom-card-number">6</div>
           <div class="custom-wishlist-card"><a>Add to Wishlist</a></div>
           <div class="custom-watch-card"><a>Watch Trailer</a></div>
           <div class="custom-card-name">Film Title</div>
@@ -134,7 +186,7 @@
             width="300px"
             height="400px"
           />
-
+          <div class="custom-card-number">7</div>
           <div class="custom-wishlist-card"><a>Add to Wishlist</a></div>
           <div class="custom-watch-card"><a>Watch Trailer</a></div>
           <div class="custom-card-name">Film Title</div>
@@ -149,7 +201,7 @@
             width="300px"
             height="400px"
           />
-
+          <div class="custom-card-number">8</div>
           <div class="custom-wishlist-card"><a>Add to Wishlist</a></div>
           <div class="custom-watch-card"><a>Watch Trailer</a></div>
           <div class="custom-card-name">Film Title</div>
@@ -164,7 +216,7 @@
             width="300px"
             height="400px"
           />
-
+          <div class="custom-card-number">9</div>
           <div class="custom-wishlist-card"><a>Add to Wishlist</a></div>
           <div class="custom-watch-card"><a>Watch Trailer</a></div>
           <div class="custom-card-name">Film Title</div>
@@ -179,7 +231,7 @@
             width="300px"
             height="400px"
           />
-
+          <div class="custom-card-number">10</div>
           <div class="custom-wishlist-card"><a>Add to Wishlist</a></div>
           <div class="custom-watch-card"><a>Watch Trailer</a></div>
           <div class="custom-card-name">Film Title</div>
@@ -203,5 +255,6 @@
       crossorigin="anonymous"
     ></script>
     <script src="./assets/js/top10.js"></script>
+    <script src="./assets/js/script.js"></script>
   </body>
 </html>
