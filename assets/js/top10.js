@@ -22,7 +22,7 @@ const getTop10Movies = async (genreId) => {
 }
 
 // on load we get 10 films
-loadData = async () => {
+const loadData = async () => {
     const topMovies = await getTop10Movies(genreId);
     for (let index = 0; index < topMovies.length; index++) {
         topMovies[index] = topMovies[index].id;
