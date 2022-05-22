@@ -260,6 +260,7 @@ button {
   background-image: url(/images/AvatarBG.png);
 }
 
+/* This is for the search bar width */
 #dropdown-container{
   width: 65%;
 }
@@ -267,10 +268,7 @@ button {
 #dropdown-container > .searchBar-customWidth{
   width: 100%;
 }
-#dropdown-container > .m-6{
-  margin-bottom: 0;
-}
-
+/* This is for the list of movies in the dropdown list */
 #dropdown-menu{
   width: 100%;
 }
@@ -305,6 +303,12 @@ button {
     overflow-x: none;
     height: 100%;
   }
+
+  /* This is for the search bar width */
+#dropdown-container{
+  width: 95%;
+}
+
 }
 
 /* This is for the Third page - Fabio */
