@@ -6,14 +6,14 @@
   --white: #ffffffff;
 }
 
-.block{
+.block {
   padding: 7rem 0;
 }
 
-main{
+main {
   padding: 100px 10px;
 }
-/* The sidepanel menu */
+/* The sidepanel wishlist menu */
 .sidepanel {
   height: 0;
   width: 0; /* 0 width - change this with JavaScript */
@@ -30,7 +30,7 @@ main{
   display: block;
 }
 
-/* The sidepanel links */
+/* The sidepanel wishlist links */
 .sidepanel a {
   padding: 8px 8px 8px 32px;
   text-decoration: none;
@@ -68,26 +68,25 @@ main{
   background-color: #444;
 }
 /* AboutMe Card AA */
-.aboutUs{
+.aboutUs {
   display: flex;
   flex-direction: column;
   text-align: center;
 }
 
-.aboutUs h2{
+.aboutUs h2 {
   font-size: 3rem;
   font-weight: bold;
   margin-bottom: 4rem;
 }
 
-.card-Container{
+.card-Container {
   max-width: 1150px;
   margin: auto;
   display: flex;
   justify-content: space-evenly;
   flex-direction: row;
   flex-wrap: wrap;
-
 }
 .card {
   flex: 0 0 30%;
@@ -96,20 +95,17 @@ main{
   float: left;
   margin-bottom: 7rem;
 }
-.card-body{
+.card-body {
   display: flex;
-   flex-direction: column;
-   align-items: center;
-  position:relative;
-  bottom: 70px; 
-}
-/* .image{
-  position:relative;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
   bottom: 70px;
-} */
-.avatarImage{
- width: 100px;
- height:100px;
+}
+
+.avatarImage {
+  width: 100px;
+  height: 100px;
 }
 .socialmediaicons {
   display: flex;
@@ -117,28 +113,23 @@ main{
 }
 @media screen and (max-width: 1108px) {
   .card {
-      flex: 0 0 45%;
-
+    flex: 0 0 45%;
   }
 }
 
 @media screen and (max-width: 880px) {
   .card {
-      flex: 0 0 70%;
-      max-width: 400px;
-
+    flex: 0 0 70%;
+    max-width: 400px;
   }
 }
 
 @media screen and (max-width: 768px) {
   .card {
-      flex: 0 0 95%;
-      max-width: 400px;
-
+    flex: 0 0 95%;
+    max-width: 400px;
   }
 }
-
-
 
 .filmgo-logo {
   height: 100%;
@@ -155,9 +146,8 @@ main{
   font-weight: bold;
   padding: 20px;
 }
-.navbar-item>button{
-    margin: auto;
-
+.navbar-item > button {
+  margin: auto;
 }
 
 .buttons {
@@ -167,7 +157,6 @@ main{
 button {
   margin-top: 65px;
 }
-
 
 @media screen and (max-width: 1108px) {
   .navbar {
@@ -261,19 +250,19 @@ button {
 }
 
 /* This is for the search bar width */
-#dropdown-container{
+#dropdown-container {
   width: 65%;
 }
 
-#dropdown-container > .searchBar-customWidth{
+#dropdown-container > .searchBar-customWidth {
   width: 100%;
 }
 /* This is for the list of movies in the dropdown list */
-#dropdown-menu{
+#dropdown-menu {
   width: 100%;
 }
 
-#dropdown-menu > #dropdown-menu-titles{
+#dropdown-menu > #dropdown-menu-titles {
   width: 95%;
   margin: auto;
   border-radius: 15px;
@@ -289,7 +278,6 @@ button {
     flex-wrap: wrap;
     overflow-x: auto;
     justify-content: center;
-
   }
   .custom-btn-banner-size {
     flex: 0 0 auto;
@@ -306,10 +294,9 @@ button {
   }
 
   /* This is for the search bar width */
-#dropdown-container{
-  width: 95%;
-}
-
+  #dropdown-container {
+    width: 95%;
+  }
 }
 
 /* This is for the Third page - Fabio */
@@ -361,66 +348,80 @@ button {
   background-color: rebeccapurple;
 }
 @media screen and (max-width: 1150px) {
-  
   .movieData-YoutubeVideos,
-.thumbnail-sizing {
-  flex: 0 0 45%;
-}
-
-@media screen and (max-width: 768px) {
-  #main-Container {
-    width: 95%;
-    padding: 1rem 1.25rem;
-  }
-  #moviDataFigureContainer-Display {
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-
-  #moviDataFigureContainer-Display > figure {
-    margin-bottom: 1rem;
-    width: 100%;
-  }
-  .moviDataFigureTrailer {
-    position: relative;
-    overflow: hidden;
-    width: 100%;
-    padding-top: 56.25%; /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
-  }
-  .trailer {
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    width: 100%;
-    height: 100%;
-  }
-  .is-flex {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-  }
   .thumbnail-sizing {
-    flex: 0 0 90%;
-  }
-  .thumbnail-sizing > img {
-    width: 100%;
+    flex: 0 0 45%;
   }
 
-  /* YOutuve */
-  .movieData-YoutubeVideos {
-    flex: 0 0 100%;
+  @media screen and (max-width: 768px) {
+    #main-Container {
+      width: 95%;
+      padding: 1rem 1.25rem;
+    }
+    #moviDataFigureContainer-Display {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #moviDataFigureContainer-Display > figure {
+      margin-bottom: 1rem;
+      width: 100%;
+    }
+    .moviDataFigureTrailer {
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      padding-top: 56.25%; /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
+    }
+    .trailer {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .is-flex {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+    }
+    .thumbnail-sizing {
+      flex: 0 0 90%;
+    }
+    .thumbnail-sizing > img {
+      width: 100%;
+    }
+
+    /* YOutuve */
+    .movieData-YoutubeVideos {
+      flex: 0 0 100%;
+    }
   }
 } /*Added this line it might cause bugs }*/
+
 /*top 10 page card deck parent div*/
+#top10movies {
+  padding: 30px;
+  color: black;
+}
+
+body {
+  background-color: #e5e5e5ff;
+}
 .CardDeck {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
+.CardDeck img {
+  border-radius: 50px;
+}
+
+/* Top 10 page title*/
 
 /* Top 10 page parent card container*/
 .custom-movie-container {
@@ -433,6 +434,18 @@ button {
   margin: 20px;
 }
 
+.custom-card-number {
+  position: absolute;
+  font-size: 40px;
+  background-color: black;
+  border: 6px;
+  padding-right: 10px;
+  padding-left: 10px;
+  border-radius: 10px;
+  color: white;
+  bottom: 1%;
+  right: 40%;
+}
 /* Div for movie card*/
 .custom-movie-card {
   position: relative;
@@ -444,9 +457,10 @@ button {
   position: absolute;
   bottom: 1%;
   padding: 5%;
-  background-color: black;
+  background-color: #fca311ff;
   color: white;
   border-radius: 7%;
+  font-weight: bold;
 }
 
 .custom-wishlist-card:hover {
@@ -459,9 +473,10 @@ button {
   bottom: 1%;
   right: 0%;
   padding: 5%;
-  background-color: black;
+  background-color: #fca311ff;
   color: white;
   border-radius: 7%;
+  font-weight: bold;
 }
 .custom-watch-card:hover {
   transform: scale(1.5);
@@ -470,15 +485,21 @@ button {
 /*Css settings for card title*/
 .custom-card-name {
   position: absolute;
+  background-color: black;
+  border-radius: 20px;
   width: 100%;
   text-align: center;
-  background: transparent;
   top: 0%;
   right: 0%;
   padding: 5%;
-  color: white;
+  color: orange;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-  font-size: large;
+  font-size: x-large;
+  font-weight: bold;
   border-color: whitesmoke;
+}
+
+.fa {
+  padding: 20px;
 }

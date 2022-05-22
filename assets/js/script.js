@@ -22,7 +22,6 @@ const renderResults = (title, id) => {
   dropDownTitles.append(searchResult);
 };
 
-
 //Onclick function for searchbar, if enter key is presed it will send a fetch request.
 
 // Onclick function for searchbar, if enter key is presed it will send a fetch request.
@@ -38,21 +37,19 @@ searchBarEl[0].addEventListener("keypress", function (event) {
         return response.json();
       })
       .then(function (data) {
-
-        
         dataArray = data.results;
         dataArray.forEach((element) => {
+          console.log(data);
+          dataArray = data.results;
+          dataArray.forEach((element) => {
+            console.log(element.id);
 
-        console.log(data);
-        dataArray = data.results;
-        dataArray.forEach((element) => {
-          console.log(element.id);
-
-          renderResults(element.title, element.id);
+            renderResults(element.title, element.id);
+          });
         });
       });
-  })
-}});
+  }
+});
 
 // This gets the movie Id and saves it into the local storage.
 dropDownContainerEl[0].addEventListener("click", function (event) {
@@ -105,11 +102,9 @@ const loadFromLS = (LSName) => {
   return arrayFromLS;
 };
 
-
 window.onload = function () {
   initializeLS("movieID");
 };
-
 
 const genreButtonClick = (id) => {
   const top10Url = `./top10.html?genre-id=${id}`;
@@ -126,7 +121,6 @@ const genresList = () => {
       return response.json();
     })
     .then(function (data) {
-
       data.genres.forEach((genre) => {
         genreButtons.forEach((genreButton) => {
           if (genreButton.textContent === genre.name) {
@@ -136,11 +130,12 @@ const genresList = () => {
           }
         });
       });
-    })};
-    
+    });
+};
+
 /* Set the width of the sidebar to 250px (show it) */
 function openNav() {
-  document.getElementById("mySidepanel").style.width = "350px";
+  document.getElementById("mySidepanel").style.width = "250px";
   document.getElementById("mySidepanel").style.height = "100%";
 }
 
