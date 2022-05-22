@@ -4,6 +4,7 @@
   --orange-web: #fca311ff;
   --platinum: #e5e5e5ff;
   --white: #ffffffff;
+  --border-radius: 10px;
 }
 
 .block {
@@ -416,6 +417,8 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  max-width: 1150px;
+  margin: auto;
 }
 .CardDeck img {
   border-radius: 50px;
@@ -432,61 +435,26 @@ body {
   border-width: 20px;
   border: pink;
   margin: 20px;
+  box-shadow: 0 0 20px 2px #a0a0a0;
+  border-radius: var(--border-radius);
+}
+.custom-movie-container:hover {
+  transform: scale(1.01);
 }
 
-.custom-card-number {
-  position: absolute;
-  font-size: 40px;
-  background-color: black;
-  border: 6px;
-  padding-right: 10px;
-  padding-left: 10px;
-  border-radius: 10px;
-  color: white;
-  bottom: 1%;
-  right: 40%;
-}
 /* Div for movie card*/
 .custom-movie-card {
   position: relative;
 }
 
-/*Div for wishlist anchor on card*/
-
-.custom-wishlist-card {
-  position: absolute;
-  bottom: 1%;
-  padding: 5%;
-  background-color: #fca311ff;
-  color: white;
-  border-radius: 7%;
-  font-weight: bold;
+.custom-movie-card > img {
+  height: 100%;
 }
-
-.custom-wishlist-card:hover {
-  transform: scale(1.2);
-}
-
-/*Div for watch now button*/
-.custom-watch-card {
-  position: absolute;
-  bottom: 1%;
-  right: 0%;
-  padding: 5%;
-  background-color: #fca311ff;
-  color: white;
-  border-radius: 7%;
-  font-weight: bold;
-}
-.custom-watch-card:hover {
-  transform: scale(1.5);
-}
-
 /*Css settings for card title*/
 .custom-card-name {
   position: absolute;
   background-color: black;
-  border-radius: 20px;
+  border-radius: var(--border-radius);
   width: 100%;
   text-align: center;
   top: 0%;
@@ -502,4 +470,60 @@ body {
 
 .fa {
   padding: 20px;
+}
+/* Custom-car-actions for number, wishlist and trailer */
+.custom-card-actions {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-content: space-between;
+}
+
+/* Card Number */
+.custom-card-number {
+  position: absolute;
+  font-size: 40px;
+  /* background-color: black; */
+  background-color: white;
+
+  padding: 4px 15px;
+  border-radius: var(--border-radius);
+  color: black;
+  font-weight: bold;
+  top: 0%;
+  right: 0%;
+  z-index: 999;
+}
+
+/*Div for wishlist anchor on card*/
+
+.custom-wishlist-card {
+  position: absolute;
+  bottom: 0%;
+  padding: 5%;
+  background-color: #fca311ff;
+  color: white;
+  border-radius: var(--border-radius);
+  font-weight: bold;
+}
+
+.custom-wishlist-card:hover {
+  transform: scale(1.05);
+}
+
+/*Div for watch now button*/
+.custom-watch-card {
+  position: absolute;
+  bottom: 0%;
+  right: 0%;
+  padding: 5%;
+  background-color: #fca311ff;
+  color: white;
+  border-radius: var(--border-radius);
+  font-weight: bold;
+  min-width: 131px;
+  text-align: center;
+}
+.custom-watch-card:hover {
+  transform: scale(1.05);
 }
