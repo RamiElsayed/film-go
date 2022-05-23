@@ -1,8 +1,35 @@
 const params = new URLSearchParams(window.location.search);
 const genreId = params.get("genre-id");
 const cardDeckEl = $("#cardDeck");
+const trailerEl = $("#trailerVideo");
 
 const genresListApi = `https://api.themoviedb.org/3/genre/movie/list?api_key=7c7537b799513b436eb6bed714d7edcc&language=en-US`;
+// Play video
+window.addEventListener("load", async function () {
+  const btnEl = document.querySelector("#play");
+
+  const videoContainerEl = document.querySelector(".video-container");
+
+  cardDeckEl.on("click", async function (event) {
+    const target = event.target;
+    if (target.id.toLowerCase() === "play") {
+      const trailerUrl = target.attributes.trailer.nodeValue;
+      trailerEl.attr("src", trailerUrl);
+      videoContainerEl.classList.add("show");
+    }
+  });
+  // trailerEl.attr("src", newTrailerLink);
+  const close = document.querySelector(".close");
+
+  // btnEl.addEventListener("click", () => {
+  //   videoContainerEl.classList.add("show");
+  // });
+
+  close.addEventListener("click", () => {
+    videoContainerEl.classList.remove("show");
+    trailerEl.attr("src", "");
+  });
+});
 
 // Renders Cards
 // This renders the cards
@@ -17,12 +44,24 @@ const renderFilmCard = (imgLink, title, index, trailerLink) => {
           />
           <div class="custom-card-number">${index}</div>
           <div class="custom-wishlist-card"><a><i class="fa-solid fa-heart"></i></a></div>
-          <div class="custom-watch-card"><a href="https://www.youtube.com/watch/${trailerLink}" target="_blank"><i class="fa-solid fa-circle-play"></i></a></div>
+          <div id="play" trailer="https://www.youtube.com/embed/${trailerLink}" class="custom-watch-card"><a ><i class="fa-solid fa-circle-play"></i></a></div>
           <div class="custom-card-name"><h3>${title}</h3></div>
         </div>
       </div>`;
   cardDeckEl.append(cardEl);
 };
+
+{
+  /* <div class="custom-watch-card">
+  <a
+    id="play"
+    href="https://www.youtube.com/watch/${trailerLink}"
+    target="_blank"
+  >
+    <i class="fa-solid fa-circle-play"></i>
+  </a>
+</div>; */
+}
 
 // this one is to fetch data from any api link
 const getDataFromApi = async (apiLink) => {
