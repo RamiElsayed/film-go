@@ -33,15 +33,15 @@ window.addEventListener("load", async function () {
 
 // Renders Cards
 // This renders the cards
-const renderFilmCard = (imgLink, title, index, trailerLink) => {
+const renderFilmCard = (imgLink, title, index, trailerLink, id) => {
   const cardEl = `<div class="custom-movie-container">
         <div class="custom-movie-card">
-          <img
+          <a href="./film-data.html?film-title=${title}&film-id=${id}"><img
             src="https://image.tmdb.org/t/p/original/${imgLink}"
             alt="movie card test image"
             width="300px"
             height="400px"
-          />
+          /></a>
           <div class="custom-card-number">${index}</div>
           <div class="custom-wishlist-card"><a><i class="fa-solid fa-heart"></i></a></div>
           <div id="play" trailer="https://www.youtube.com/embed/${trailerLink}" class="custom-watch-card"><a ><i class="fa-solid fa-circle-play"></i></a></div>
@@ -105,13 +105,16 @@ const appendFilmDataToHTML = async () => {
     // const trailer = await addTrailer(arrayMovieData[i][2]);
     // const trailerVideoID = addTrailer(arrayMovieData[i].id);
     // console.log(arrayMovieData[i][2]);
+    const imdbID = await convertToImdbID(arrayMovieData[i][2]);
+    console.log(imdbID.imdb_id);
     const trailerVideoID = await passID(arrayMovieData[i][2]);
     const index = i + 1;
     renderFilmCard(
       arrayMovieData[i][0],
       arrayMovieData[i][1],
       index,
-      trailerVideoID
+      trailerVideoID,
+      imdbID.imdb_id
     );
   }
 };
