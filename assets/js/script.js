@@ -39,13 +39,8 @@ searchBarEl[0].addEventListener("keypress", function (event) {
       .then(function (data) {
         dataArray = data.results;
         dataArray.forEach((element) => {
-          console.log(data);
           dataArray = data.results;
-          dataArray.forEach((element) => {
-            console.log(element.id);
-
-            renderResults(element.title, element.id);
-          });
+          renderResults(element.title, element.id);
         });
       });
   }
