@@ -523,13 +523,14 @@ body {
 }
 /* Transitions */
 .custom-wishlist-card:hover,
-.custom-wishlist-card:hover > a {
+.custom-watch-card:hover {
   background-color: var(--hover-icon-color);
-  color: red;
+  transform: scale(1.05);
 }
 
-.custom-wishlist-card:hover {
-  transform: scale(1.05);
+.custom-wishlist-card:hover > a,
+.custom-watch-card:hover > a {
+  color: red;
 }
 
 /*Div for watch now button*/
@@ -543,20 +544,9 @@ body {
   border-radius: var(--border-radius);
   font-weight: bold;
   text-align: center;
-    transition: all 400ms;
-
+  transition: all 400ms;
 }
-.custom-watch-card > a{
+.custom-watch-card > a {
   color: white;
-    transition: all 600ms;
-
-}
-
-.custom-watch-card:hover,
-.custom-watch-card:hover > a {
-    background-color: var(--hover-icon-color);
-  color: red;
-
-}
-  transform: scale(1.05);
+  transition: all 600ms;
 }
