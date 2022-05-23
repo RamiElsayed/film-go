@@ -1,4 +1,4 @@
-const btnEl = document.querySelector(".btn");
+const btnEl = document.querySelector("#play");
 const videoContainerEl = document.querySelector(".video-container");
 const close = document.querySelector(".close");
 
