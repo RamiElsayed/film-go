@@ -4,50 +4,8 @@ const cardDeckEl = $("#cardDeck");
 const trailerEl = $("#trailerVideo");
 const sideBarEL = $("#mySidepanel");
 
-const genresListApi = `https://api.themoviedb.org/3/genre/movie/list?api_key=7c7537b799513b436eb6bed714d7edcc&language=en-US`;
-// Play video
-window.addEventListener("load", async function () {
-  const btnEl = document.querySelector("#play");
-
-  const videoContainerEl = document.querySelector(".video-container");
-
-  cardDeckEl.on("click", async function (event) {
-    const target = event.target;
-
-    if (target.id.toLowerCase() === "play") {
-      const trailerUrl = target.attributes.trailer.nodeValue;
-      trailerEl.attr("src", trailerUrl);
-      videoContainerEl.classList.add("show");
-    }
-
-    if (target.id.toLowerCase() === "addtowishlist") {
-      const movieTitleAttrID = target.attributes.movieid.nodeValue;
-      const movieTitleAttrTitle = target.attributes.title.nodeValue;
-      const movieArray = [movieTitleAttrID, movieTitleAttrTitle];
-      const wishListTitlesOne = JSON.parse(localStorage.getItem("wishList"));
-      console.log(wishListTitlesOne[0]);
-      const containsAll = includesArray(wishListTitlesOne, movieArray);
-      console.log(containsAll);
-      if (!containsAll) {
-        saveToLS("wishList", movieArray);
-      }
-    }
-  });
-  // trailerEl.attr("src", newTrailerLink);
-  const close = document.querySelector(".close");
-
-  // btnEl.addEventListener("click", () => {
-  //   videoContainerEl.classList.add("show");
-  // });
-
-  close.addEventListener("click", () => {
-    videoContainerEl.classList.remove("show");
-    trailerEl.attr("src", "");
-  });
-});
-
-// Renders Cards
-// This renders the cards
+/*Render Functions*/
+// Movie card renderer function
 const renderFilmCard = (imgLink, title, index, trailerLink, id) => {
   const cardEl = `<div class="custom-movie-container">
         <div class="custom-movie-card">
@@ -66,10 +24,53 @@ const renderFilmCard = (imgLink, title, index, trailerLink, id) => {
   cardDeckEl.append(cardEl);
 };
 
+/*Wish list's items renderer function */
 const renderWishItems = (title, id) => {
   const listEl = `<a href="./film-data.html?film-title=${title}&film-id=${id}" class="wishList-Film" >${title}</a>`;
   sideBarEL.append(listEl);
 };
+
+/* APIS*/
+const genresListApi = `https://api.themoviedb.org/3/genre/movie/list?api_key=7c7537b799513b436eb6bed714d7edcc&language=en-US`;
+
+// Play video and add to wishList
+window.addEventListener("load", async function () {
+  // const btnEl = document.querySelector("#play");
+
+  const videoContainerEl = document.querySelector(".video-container");
+  const close = document.querySelector(".close");
+
+  cardDeckEl.on("click", async function (event) {
+    const target = event.target;
+    /* Upon clicking on the playbutton, the iframe html code will update its src attribute file to that of the official trailer.*/
+    /* It will also add the class show to the video container to make it pop up*/
+    if (target.id.toLowerCase() === "play") {
+      const trailerUrl = target.attributes.trailer.nodeValue;
+      trailerEl.attr("src", trailerUrl);
+      videoContainerEl.classList.add("show");
+    }
+    /*When the X (close button) is clicked it will remove the class show from the video container to make it dissapear,
+    it will also set the SRC attribute of iframe to " " to stop the video */
+    close.addEventListener("click", () => {
+      videoContainerEl.classList.remove("show");
+      trailerEl.attr("src", "");
+    });
+
+    /* Upon clicking on the wishlist button, the movieID and MovieTitle attributes will be saved into an array.*/
+    /*Then, the wishlist from local storage is pull and checked to see if it includes the  current movieHTMLAttributes
+    if true, the value is not save to LS. If false, it will save the current movieHTMLAttrArr to LS */
+    if (target.id.toLowerCase() === "addtowishlist") {
+      const movieTitleIDAttr = target.attributes.movieid.nodeValue;
+      const movieTitleAttr = target.attributes.title.nodeValue;
+      const movieHTMLAttrArr = [movieTitleIDAttr, movieTitleAttr];
+      const wishListLS = JSON.parse(localStorage.getItem("wishList"));
+      const containsAll = includesArray(wishListLS, movieHTMLAttrArr);
+      if (!containsAll) {
+        saveToLS("wishList", movieHTMLAttrArr);
+      }
+    }
+  });
+});
 
 // this one is to fetch data from any api link
 const getDataFromApi = async (apiLink) => {
