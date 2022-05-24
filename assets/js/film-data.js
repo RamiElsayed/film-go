@@ -1,6 +1,7 @@
 const params = new URLSearchParams(window.location.search);
 const filmId = params.get("film-id");
 const filmTitle = params.get("film-title");
+const sideBarEL = $("#mySidepanel");
 
 const mainElem = document.querySelector("main");
 const videosListElem = document.getElementById("videos-container");
@@ -104,3 +105,70 @@ getTrailerLink(filmId);
 //   storyLine: data.overview,
 //   genres: genresListString,
 // };
+
+/*--------------------------------Wish List---------------------------------- */
+/* Set the width of the sidebar wishList to 250px (show it) */
+function openNav() {
+  document.getElementById("mySidepanel").style.width = "250px";
+  document.getElementById("mySidepanel").style.height = "100%";
+  loadWishList();
+}
+
+/* Set the width of the sidebar wishList to 0 (hide it) */
+function closeNav() {
+  document.getElementById("mySidepanel").style.width = "0";
+  document.getElementById("mySidepanel").style.height = "0";
+  const wishListItems = document.querySelectorAll(".wishList-Film");
+  wishListItems.forEach((element) => {
+    element.remove();
+  });
+}
+
+// Initialises wishList in local storage.
+/*Wish list's items renderer function */
+const renderWishItems = (title, id) => {
+  const listEl = `<a href="./film-data.html?film-title=${title}&film-id=${id}" class="wishList-Film" >${title}</a>`;
+  sideBarEL.append(listEl);
+};
+const initializeLS = () => {
+  // Calling the schedule array from the local storage
+  const scheduleFromLS = JSON.parse(localStorage.getItem("wishList"));
+
+  // If the array is undefined, we create an empty array and push it to the local storage
+  if (!scheduleFromLS) {
+    localStorage.setItem("wishList", JSON.stringify([]));
+  }
+};
+
+// This pushes a value to a array (location) in the LS
+const saveToLS = (location, value) => {
+  // Calls the local storage object.
+  let arrayFromLS = JSON.parse(localStorage.getItem(location));
+
+  // Adds a new value to the array .
+  arrayFromLS.push(value);
+
+  // Saves the new object to the local storage
+  localStorage.setItem(location, JSON.stringify(arrayFromLS));
+};
+
+// This loads the array from the local storage for wish list
+const loadFromLS = (LSName) => {
+  // Getting the object from local storage.
+  const arrayFromLS = Object.entries(JSON.parse(localStorage.getItem(LSName)));
+  return arrayFromLS;
+};
+
+/* This loads the wishList from LS and passes the value to the renderWishItems function to 
+render them in the wishlist*/
+const loadWishList = () => {
+  const wishListTitles = loadFromLS("wishList");
+  wishListTitles.forEach((element) =>
+    renderWishItems(element[1][1], element[1][0])
+  );
+};
+
+// This functions are on page loaded
+window.onload = function () {
+  initializeLS();
+};
