@@ -108,22 +108,31 @@ getTrailerLink(filmId);
 
 /*--------------------------------Wish List---------------------------------- */
 /* Set the width of the sidebar wishList to 250px (show it) */
+let view = false;
+
 function openNav() {
-  document.getElementById("mySidepanel").style.width = "250px";
-  document.getElementById("mySidepanel").style.height = "100%";
-  loadWishList();
+  if (!view) {
+    document.getElementById("mySidepanel").style.width = "25rem";
+    document.getElementById("mySidepanel").style.height = "fit-content";
+    loadWishList();
+    view = true;
+  } else if (view) {
+    closeNav();
+  }
 }
 
 /* Set the width of the sidebar wishList to 0 (hide it) */
 function closeNav() {
-  document.getElementById("mySidepanel").style.width = "0";
-  document.getElementById("mySidepanel").style.height = "0";
-  const wishListItems = document.querySelectorAll(".wishList-Film");
-  wishListItems.forEach((element) => {
-    element.remove();
-  });
+  if (view) {
+    view = false;
+    document.getElementById("mySidepanel").style.width = "0";
+    document.getElementById("mySidepanel").style.height = "0";
+    const wishListItems = document.querySelectorAll(".wishList-Film");
+    wishListItems.forEach((element) => {
+      element.remove();
+    });
+  }
 }
-
 // Initialises wishList in local storage.
 /*Wish list's items renderer function */
 const renderWishItems = (title, id) => {
