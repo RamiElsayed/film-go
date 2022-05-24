@@ -2,6 +2,7 @@ const params = new URLSearchParams(window.location.search);
 const genreId = params.get("genre-id");
 const cardDeckEl = $("#cardDeck");
 const trailerEl = $("#trailerVideo");
+const sideBarEL = $("#mySidepanel");
 
 const genresListApi = `https://api.themoviedb.org/3/genre/movie/list?api_key=7c7537b799513b436eb6bed714d7edcc&language=en-US`;
 // Play video
@@ -12,10 +13,24 @@ window.addEventListener("load", async function () {
 
   cardDeckEl.on("click", async function (event) {
     const target = event.target;
+
     if (target.id.toLowerCase() === "play") {
       const trailerUrl = target.attributes.trailer.nodeValue;
       trailerEl.attr("src", trailerUrl);
       videoContainerEl.classList.add("show");
+    }
+
+    if (target.id.toLowerCase() === "addtowishlist") {
+      const movieTitleAttrID = target.attributes.movieid.nodeValue;
+      const movieTitleAttrTitle = target.attributes.title.nodeValue;
+      const movieArray = [movieTitleAttrID, movieTitleAttrTitle];
+      const wishListTitlesOne = JSON.parse(localStorage.getItem("wishList"));
+      console.log(wishListTitlesOne[0]);
+      const containsAll = includesArray(wishListTitlesOne, movieArray);
+      console.log(containsAll);
+      if (!containsAll) {
+        saveToLS("wishList", movieArray);
+      }
     }
   });
   // trailerEl.attr("src", newTrailerLink);
@@ -43,7 +58,7 @@ const renderFilmCard = (imgLink, title, index, trailerLink, id) => {
             height="400px"
           /></a>
           <div class="custom-card-number">${index}</div>
-          <div class="custom-wishlist-card"><a><i class="fa-solid fa-heart"></i></a></div>
+          <div id="addToWishList" title="${title}" movieID=${id} class="custom-wishlist-card"><a><i class="fa-solid fa-heart"></i></a></div>
           <div id="play" trailer="https://www.youtube.com/embed/${trailerLink}" class="custom-watch-card"><a ><i class="fa-solid fa-circle-play"></i></a></div>
           <div class="custom-card-name"><h3>${title}</h3></div>
         </div>
@@ -51,17 +66,10 @@ const renderFilmCard = (imgLink, title, index, trailerLink, id) => {
   cardDeckEl.append(cardEl);
 };
 
-{
-  /* <div class="custom-watch-card">
-  <a
-    id="play"
-    href="https://www.youtube.com/watch/${trailerLink}"
-    target="_blank"
-  >
-    <i class="fa-solid fa-circle-play"></i>
-  </a>
-</div>; */
-}
+const renderWishItems = (title, id) => {
+  const listEl = `<a href="./film-data.html?film-title=${title}&film-id=${id}" class="wishList-Film" >${title}</a>`;
+  sideBarEL.append(listEl);
+};
 
 // this one is to fetch data from any api link
 const getDataFromApi = async (apiLink) => {
@@ -73,7 +81,7 @@ const getDataFromApi = async (apiLink) => {
 const getTop10Movies = async (genreId) => {
   const url = `https://api.themoviedb.org/3/discover/movie?api_key=7c7537b799513b436eb6bed714d7edcc&with_genres=${genreId}`;
   const movies = await getDataFromApi(url);
-  return movies.results.slice(0, 10);
+  return movies.results.slice(0, 3);
 };
 
 // on load we get 10 films
@@ -88,7 +96,7 @@ const getTop10Tmdb = async () => {
 // This is my code Fabian
 const getPosters = async () => {
   const posters = await getTop10Movies(genreId);
-  for (let index = 0; index < 10; index++) {
+  for (let index = 0; index < posters.length; index++) {
     posters[index] = [
       posters[index].poster_path,
       posters[index].title,
@@ -106,7 +114,6 @@ const appendFilmDataToHTML = async () => {
     // const trailerVideoID = addTrailer(arrayMovieData[i].id);
     // console.log(arrayMovieData[i][2]);
     const imdbID = await convertToImdbID(arrayMovieData[i][2]);
-    console.log(imdbID.imdb_id);
     const trailerVideoID = await passID(arrayMovieData[i][2]);
     const index = i + 1;
     renderFilmCard(
@@ -207,10 +214,66 @@ appendFilmDataToHTML();
 function openNav() {
   document.getElementById("mySidepanel").style.width = "250px";
   document.getElementById("mySidepanel").style.height = "100%";
+  loadWishList();
 }
 
 /* Set the width of the sidebar to 0 (hide it) */
 function closeNav() {
   document.getElementById("mySidepanel").style.width = "0";
   document.getElementById("mySidepanel").style.height = "0";
+  const wishListItems = document.querySelectorAll(".wishList-Film");
+  wishListItems.forEach((element) => {
+    element.remove();
+  });
 }
+
+// This is for the wishList
+
+//to do wish list
+// Initialise local storage.
+const initializeLS = () => {
+  // Calling the schedule array from the local storage
+  const scheduleFromLS = JSON.parse(localStorage.getItem("wishList"));
+
+  // If the array is undefined, we create an empty array and push it to the local storage
+  if (!scheduleFromLS) {
+    localStorage.setItem("wishList", JSON.stringify([]));
+  }
+};
+
+// wish list local storage function
+const saveToLS = (location, value) => {
+  // Calls the local storage object.
+  let arrayFromLS = JSON.parse(localStorage.getItem(location));
+
+  // Adds a new value to the object .
+  arrayFromLS.push(value);
+
+  // Saves the new object to the local storage
+  localStorage.setItem(location, JSON.stringify(arrayFromLS));
+};
+
+// This loads the array from the local storage for wish list
+const loadFromLS = (LSName) => {
+  // Getting the object from local storage.
+  const arrayFromLS = Object.entries(JSON.parse(localStorage.getItem(LSName)));
+  return arrayFromLS;
+};
+
+const loadWishList = () => {
+  const wishListTitles = loadFromLS("wishList");
+  wishListTitles.forEach((element) =>
+    renderWishItems(element[1][1], element[1][0])
+  );
+};
+
+window.onload = function () {
+  initializeLS();
+};
+
+// Utility functions
+const includesArray = (data, arr) => {
+  return data.some(
+    (e) => Array.isArray(e) && e.every((o, i) => Object.is(arr[i], o))
+  );
+};
