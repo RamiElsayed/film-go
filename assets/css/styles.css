@@ -8,13 +8,30 @@
   --unhover-icon-color: rgba(252, 162, 17, 0.4);
   --hover-icon-color: rgba(252, 162, 17);
 }
+* {
+  box-sizing: border-box;
+}
 
 html {
+  font-size: 10px;
   scroll-behavior: smooth;
 }
 
-.block {
+body {
+  height: 100vh;
+  overflow: scroll;
+}
+.about-us-card {
   padding: 7rem 0;
+}
+
+.max-width-custom {
+  margin: auto;
+  max-width: 1150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 main {
@@ -25,10 +42,9 @@ main {
   height: 0;
   width: 0; /* 0 width - change this with JavaScript */
   position: fixed; /* Stay in place */
-  margin-left: 85%;
   z-index: 1; /* Stay on top */
   top: 0;
-  left: 0;
+  right: 0;
   background-color: #111; /* Black*/
   overflow-x: hidden; /* Disable horizontal scroll */
   overflow-y: hidden;
@@ -88,7 +104,7 @@ main {
 }
 
 .card-Container {
-  max-width: 1150px;
+  max-width: 115rem;
   margin: auto;
   display: flex;
   justify-content: space-evenly;
@@ -100,7 +116,7 @@ main {
   /* width: 20%; */
   max-height: 310px;
   float: left;
-  margin-bottom: 7rem;
+  margin-bottom: 10rem;
 }
 .card-body {
   display: flex;
@@ -138,12 +154,13 @@ main {
   }
 }
 
+/* ------------ Navbar------------ */
 .filmgo-logo {
-  height: 100%;
-  width: 100%;
+  padding-left: 1rem;
 }
 
 .navbar {
+  display: flex;
   background-color: black;
 }
 
@@ -162,19 +179,22 @@ main {
 }
 
 button {
-  margin-top: 65px;
+  margin-top: 3rem;
+}
+
+.navbar-brand1 {
+  align-items: center;
+  display: flex;
+  flex-shrink: 0;
+  min-height: 3.25rem;
 }
 
 @media screen and (max-width: 1108px) {
-  .navbar {
+  .navbar-brand1 {
+    align-items: center;
     display: flex;
-    flex-direction: row;
-  }
-
-  .navbar-brand {
-    width: fit-content;
-    display: flex;
-    justify-content: center;
+    flex-shrink: 0;
+    min-height: 3.25rem;
   }
 
   header {
@@ -211,7 +231,6 @@ button {
 }
 @media screen and (max-width: 768px) {
   .navbar {
-    display: flex;
     flex-direction: column;
   }
   .navbar-end {
@@ -254,7 +273,7 @@ button {
   display: flex;
   background-image: url("/images/Avatar/BG.png");
   background-image: url(/images/AvatarBG.png);
-  clip-path: polygon(0 0, 100% 0, 100% 93%, 0% 100%);
+  clip-path: polygon(0 0, 100% 0, 100% 99%, 0% 100%);
 }
 
 /* This is for the search bar width */
@@ -300,7 +319,9 @@ button {
     overflow-x: none;
     height: 100%;
   }
-
+  .sidepanel {
+    position: relative;
+  }
   /* This is for the search bar width */
   #dropdown-container {
     width: 95%;
