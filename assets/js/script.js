@@ -3,6 +3,7 @@
 const searchBarEl = $("#searchbar-dynamic");
 const dropDownTitles = $("#dropdown-menu-titles");
 const dropDownContainerEl = $("#dropdown-menu");
+const sideBarEL = $("#mySidepanel");
 
 // This fetches the titles from the IMD api for the dynamic dropdown list
 
@@ -23,9 +24,6 @@ const renderResults = (title, id) => {
 };
 
 //Onclick function for searchbar, if enter key is presed it will send a fetch request.
-
-// Onclick function for searchbar, if enter key is presed it will send a fetch request.
-
 searchBarEl[0].addEventListener("keypress", function (event) {
   dropDownContainerEl.empty();
   renderDropDownMenu();
@@ -60,29 +58,47 @@ dropDownContainerEl[0].addEventListener("click", function (event) {
 });
 
 //to do wish list
-// Initialise local storage.
+
+/*--------------------------------Wish List---------------------------------- */
+/* Set the width of the sidebar wishList to 250px (show it) */
+function openNav() {
+  document.getElementById("mySidepanel").style.width = "250px";
+  document.getElementById("mySidepanel").style.height = "100%";
+  loadWishList();
+}
+
+/* Set the width of the sidebar wishList to 0 (hide it) */
+function closeNav() {
+  document.getElementById("mySidepanel").style.width = "0";
+  document.getElementById("mySidepanel").style.height = "0";
+  const wishListItems = document.querySelectorAll(".wishList-Film");
+  wishListItems.forEach((element) => {
+    element.remove();
+  });
+}
+
+// Initialises wishList in local storage.
+/*Wish list's items renderer function */
+const renderWishItems = (title, id) => {
+  const listEl = `<a href="./film-data.html?film-title=${title}&film-id=${id}" class="wishList-Film" >${title}</a>`;
+  sideBarEL.append(listEl);
+};
 const initializeLS = () => {
   // Calling the schedule array from the local storage
-  const scheduleFromLS = JSON.parse(localStorage.getItem("movieID"));
-  const movieTitleFromLS = JSON.parse(localStorage.getItem("movietitle"));
+  const scheduleFromLS = JSON.parse(localStorage.getItem("wishList"));
 
   // If the array is undefined, we create an empty array and push it to the local storage
   if (!scheduleFromLS) {
-    localStorage.setItem("movieID", JSON.stringify([]));
-  }
-  // If the array is undefined, we create an empty array and push it to the local storage
-  if (!movieTitleFromLS) {
-    localStorage.setItem("movietitle", JSON.stringify([]));
+    localStorage.setItem("wishList", JSON.stringify([]));
   }
 };
 
-// wish list local storage function
+// This pushes a value to a array (location) in the LS
 const saveToLS = (location, value) => {
   // Calls the local storage object.
   let arrayFromLS = JSON.parse(localStorage.getItem(location));
 
-  // Adds a new value to the object and clears the previous value.
-  arrayFromLS = [];
+  // Adds a new value to the array .
   arrayFromLS.push(value);
 
   // Saves the new object to the local storage
@@ -93,12 +109,21 @@ const saveToLS = (location, value) => {
 const loadFromLS = (LSName) => {
   // Getting the object from local storage.
   const arrayFromLS = Object.entries(JSON.parse(localStorage.getItem(LSName)));
-  console.log(arrayFromLS);
   return arrayFromLS;
 };
 
+/* This loads the wishList from LS and passes the value to the renderWishItems function to 
+render them in the wishlist*/
+const loadWishList = () => {
+  const wishListTitles = loadFromLS("wishList");
+  wishListTitles.forEach((element) =>
+    renderWishItems(element[1][1], element[1][0])
+  );
+};
+
+// This functions are on page loaded
 window.onload = function () {
-  initializeLS("movieID");
+  initializeLS();
 };
 
 const genreButtonClick = (id) => {
@@ -128,15 +153,4 @@ const genresList = () => {
     });
 };
 
-/* Set the width of the sidebar to 250px (show it) */
-function openNav() {
-  document.getElementById("mySidepanel").style.width = "250px";
-  document.getElementById("mySidepanel").style.height = "100%";
-}
-
-/* Set the width of the sidebar to 0 (hide it) */
-function closeNav() {
-  document.getElementById("mySidepanel").style.width = "0";
-  document.getElementById("mySidepanel").style.height = "0";
-}
 genresList();
