@@ -1,3 +1,7 @@
+/* APIS*/
+const genresListApi = `https://api.themoviedb.org/3/genre/movie/list?api_key=7c7537b799513b436eb6bed714d7edcc&language=en-US`;
+
+/*Variables */
 const params = new URLSearchParams(window.location.search);
 const genreId = params.get("genre-id");
 const cardDeckEl = $("#cardDeck");
@@ -29,9 +33,6 @@ const renderWishItems = (title, id) => {
   const listEl = `<a href="./film-data.html?film-title=${title}&film-id=${id}" class="wishList-Film" >${title}</a>`;
   sideBarEL.append(listEl);
 };
-
-/* APIS*/
-const genresListApi = `https://api.themoviedb.org/3/genre/movie/list?api_key=7c7537b799513b436eb6bed714d7edcc&language=en-US`;
 
 // Play video and add to wishList
 window.addEventListener("load", async function () {
@@ -83,6 +84,7 @@ const getTop10Movies = async (genreId) => {
   const url = `https://api.themoviedb.org/3/discover/movie?api_key=7c7537b799513b436eb6bed714d7edcc&with_genres=${genreId}`;
   const movies = await getDataFromApi(url);
   return movies.results.slice(0, 3);
+  // return movies.results.slice(0, 10);
 };
 
 // on load we get 10 films
@@ -95,7 +97,7 @@ const getTop10Tmdb = async () => {
 };
 
 // This is my code Fabian
-const getPosters = async () => {
+const getMoviesDetails = async () => {
   const posters = await getTop10Movies(genreId);
   for (let index = 0; index < posters.length; index++) {
     posters[index] = [
@@ -109,13 +111,10 @@ const getPosters = async () => {
 
 // getTop10Tmdb();
 const appendFilmDataToHTML = async () => {
-  const arrayMovieData = await getPosters();
+  const arrayMovieData = await getMoviesDetails();
   for (let i = 0; i < arrayMovieData.length; i++) {
-    // const trailer = await addTrailer(arrayMovieData[i][2]);
-    // const trailerVideoID = addTrailer(arrayMovieData[i].id);
-    // console.log(arrayMovieData[i][2]);
     const imdbID = await convertToImdbID(arrayMovieData[i][2]);
-    const trailerVideoID = await passID(arrayMovieData[i][2]);
+    const trailerVideoID = await getTrailerID(arrayMovieData[i][2]);
     const index = i + 1;
     renderFilmCard(
       arrayMovieData[i][0],
@@ -127,52 +126,27 @@ const appendFilmDataToHTML = async () => {
   }
 };
 
-const getTrailerLink = async (filmId) => {
-  function getTrailerID(filmId) {
-    return fetch(
-      `https://imdb-api.com/en/API/YouTubeTrailer/k_voxajyfz/${filmId}`
-    );
-  }
-  const trailer = await getTrailerID(filmId);
-  return trailer.json();
+// This gets the youtube trailer ID e.g. awHyqJv3WKE
+const getTrailerLink = async (imdbID) => {
+  const ApiTrailerID = `https://imdb-api.com/en/API/YouTubeTrailer/k_voxajyfz/${imdbID}`;
+  const trailerID = await getDataFromApi(ApiTrailerID);
+  return trailerID;
 };
-// This converts the TMDB-ID to IMDB-ID
+// This converts the movieID from TMDB-ID to IMDB-ID
 const convertToImdbID = async (TmdbID) => {
-  function getTrailerID(TmdbID) {
-    return fetch(
-      `https://api.themoviedb.org/3/movie/${TmdbID}/external_ids?api_key=7c7537b799513b436eb6bed714d7edcc`
-    );
-  }
-  const id = await getTrailerID(TmdbID);
-  return id.json();
+  const ApiToImdbID = `https://api.themoviedb.org/3/movie/${TmdbID}/external_ids?api_key=7c7537b799513b436eb6bed714d7edcc`;
+  const imdbId = await getDataFromApi(ApiToImdbID);
+  return imdbId;
 };
-const addTrailer = async (filmId) => {
-  const videoIDs = await convertToImdbID(filmId); //These video ids are for several websites
+
+/*After the TMDB-ID is converted to a IMDB-ID, it gets used to get the trailer ID from the API*/
+const getTrailerID = async (tmbdID) => {
+  const videoIDs = await convertToImdbID(tmbdID); //These video ids are for several websites
   const trailerID = await getTrailerLink(videoIDs.imdb_id);
   return trailerID.videoId;
 };
 
-const passID = async (tmbdID) => {
-  const trailerVideoID = await addTrailer(tmbdID);
-  return trailerVideoID;
-};
-
-// Here ends fabian's code
-
-// /* function 1 matching genre to id*/
-// const matchGenreId = (genre) => {
-//     const data = getDataFromApi(genresListApi);
-//     for (let index = 0; index < data.length; index++) {
-//        if (data[index].name === genre) {
-//            return data[index].id;
-//        }
-//     }
-// }
-
-/* function 2 get the IMDB id from comparing to TMDB id*/
-
 //This function is supposed to take a single tmdb id and return a single imdb id. 6977 --> tt423440
-
 const getImdbIds = async () => {
   const tmdbIds = await getTop10Tmdb();
   const imdbIds = (
@@ -187,38 +161,16 @@ const getImdbIds = async () => {
   ).filter((x) => x);
   console.log(imdbIds);
 };
-// getImdbIds();
 
-/*select the table div*/
-const table = document.getElementsByClassName("table")[0];
-
-/*Create Card Div JS*/
-// function createCard(number) {
-//   const card = document.createElement("div");
-//   card.className = "card";
-//   const topNumber = document.createElement("div");
-//   topNumber.innerText = number;
-//   const bottomNumber = document.createElement("div");
-//   bottomNumber.className = "right";
-//   bottomNumber.innerText = number;
-//   card.append(topNumber);
-//   card.append(bottomNumber);
-//   return card;
-// }
-
-// table.appendChild(createCard(5));
-
-// This functions are on page loaded
-appendFilmDataToHTML();
-
-/* Set the width of the sidebar to 250px (show it) */
+/*--------------------------------Wish List---------------------------------- */
+/* Set the width of the sidebar wishList to 250px (show it) */
 function openNav() {
   document.getElementById("mySidepanel").style.width = "250px";
   document.getElementById("mySidepanel").style.height = "100%";
   loadWishList();
 }
 
-/* Set the width of the sidebar to 0 (hide it) */
+/* Set the width of the sidebar wishList to 0 (hide it) */
 function closeNav() {
   document.getElementById("mySidepanel").style.width = "0";
   document.getElementById("mySidepanel").style.height = "0";
@@ -228,10 +180,7 @@ function closeNav() {
   });
 }
 
-// This is for the wishList
-
-//to do wish list
-// Initialise local storage.
+// Initialises wishList in local storage.
 const initializeLS = () => {
   // Calling the schedule array from the local storage
   const scheduleFromLS = JSON.parse(localStorage.getItem("wishList"));
@@ -242,12 +191,12 @@ const initializeLS = () => {
   }
 };
 
-// wish list local storage function
+// This pushes a value to a array (location) in the LS
 const saveToLS = (location, value) => {
   // Calls the local storage object.
   let arrayFromLS = JSON.parse(localStorage.getItem(location));
 
-  // Adds a new value to the object .
+  // Adds a new value to the array .
   arrayFromLS.push(value);
 
   // Saves the new object to the local storage
@@ -261,6 +210,8 @@ const loadFromLS = (LSName) => {
   return arrayFromLS;
 };
 
+/* This loads the wishList from LS and passes the value to the renderWishItems function to 
+render them in the wishlist*/
 const loadWishList = () => {
   const wishListTitles = loadFromLS("wishList");
   wishListTitles.forEach((element) =>
@@ -268,11 +219,14 @@ const loadWishList = () => {
   );
 };
 
+// This functions are on page loaded
 window.onload = function () {
   initializeLS();
+  appendFilmDataToHTML();
 };
 
-// Utility functions
+/*--------------------------------Utility functions---------------------------------- */
+// This checks if an array of arrays contains an smaller array's values.
 const includesArray = (data, arr) => {
   return data.some(
     (e) => Array.isArray(e) && e.every((o, i) => Object.is(arr[i], o))
