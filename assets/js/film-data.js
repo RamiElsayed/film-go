@@ -181,3 +181,6 @@ const loadWishList = () => {
 window.onload = function () {
   initializeLS();
 };
+const top10Link = (id) => {
+  window.location.href = `./top10.html?genre-id=${id}`;
+};

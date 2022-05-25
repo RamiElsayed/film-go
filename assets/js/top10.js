@@ -83,7 +83,7 @@ const getDataFromApi = async (apiLink) => {
 const getTop10Movies = async (genreId) => {
   const url = `https://api.themoviedb.org/3/discover/movie?api_key=7c7537b799513b436eb6bed714d7edcc&with_genres=${genreId}`;
   const movies = await getDataFromApi(url);
-  return movies.results.slice(0, 3);
+  return movies.results.slice(0, 10);
   // return movies.results.slice(0, 10);
 };
 
@@ -241,4 +241,7 @@ const includesArray = (data, arr) => {
   return data.some(
     (e) => Array.isArray(e) && e.every((o, i) => Object.is(arr[i], o))
   );
+};
+const top10Link = (id) => {
+  window.location.href = `./top10.html?genre-id=${id}`;
 };

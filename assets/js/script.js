@@ -162,4 +162,12 @@ const genresList = () => {
       });
     });
 };
+const getDataFromApi = async (apiLink) => {
+  const response = await fetch(apiLink);
+  return response.json();
+};
+
+const top10Link = (id) => {
+  window.location.href = `./top10.html?genre-id=${id}`;
+};
 genresList();
