@@ -21,10 +21,29 @@ body {
   height: 100vh;
   overflow: scroll;
 }
-.about-us-card {
-  padding: 7rem 0;
+
+/* ------------ Navbar------------ */
+
+.filmgo-logo {
+  padding-left: 1rem;
 }
 
+.navbar {
+  display: flex;
+  background-color: black;
+}
+/* Banner settings jeerjs */
+
+.custom-banner-image {
+  background-size: cover;
+  display: flex;
+  background-image: url(../../images/AvatarBG.png);
+  clip-path: polygon(0 0, 100% 0, 100% 99%, 0% 100%);
+}
+.avatarImage {
+  width: 100px;
+  height: 100px;
+}
 .max-width-custom {
   margin: auto;
   max-width: 1150px;
@@ -35,7 +54,7 @@ body {
 }
 
 main {
-  padding: 100px 10px;
+  padding: 10rem 1rem;
 }
 /* The sidepanel wishlist menu */
 .sidepanel {
@@ -102,8 +121,10 @@ main {
   font-weight: bold;
   margin-bottom: 4rem;
 }
-
-.card-Container {
+.about-us-card {
+  padding: 7rem 0;
+}
+.cards-Container {
   max-width: 115rem;
   margin: auto;
   display: flex;
@@ -111,7 +132,7 @@ main {
   flex-direction: row;
   flex-wrap: wrap;
 }
-.card {
+.card-container {
   flex: 0 0 30%;
   /* width: 20%; */
   max-height: 310px;
@@ -126,10 +147,6 @@ main {
   bottom: 70px;
 }
 
-.avatarImage {
-  width: 100px;
-  height: 100px;
-}
 .socialmediaicons {
   display: flex;
   justify-content: center;
@@ -154,15 +171,6 @@ main {
   }
 }
 
-/* ------------ Navbar------------ */
-.filmgo-logo {
-  padding-left: 1rem;
-}
-
-.navbar {
-  display: flex;
-  background-color: black;
-}
 
 .navbar-item {
   color: #fca311ff;
@@ -265,15 +273,6 @@ button {
   .navbar-item:hover {
     display: block;
   }
-}
-/* Banner settings jeerjs */
-
-.custom-banner-image {
-  background-size: cover;
-  display: flex;
-  background-image: url("/images/Avatar/BG.png");
-  background-image: url(/images/AvatarBG.png);
-  clip-path: polygon(0 0, 100% 0, 100% 99%, 0% 100%);
 }
 
 /* This is for the search bar width */
