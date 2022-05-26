@@ -56,6 +56,8 @@ body {
 main {
   padding: 10rem 1rem;
 }
+
+/* -------------------- Wishlist -------------------- */
 /* The sidepanel wishlist menu */
 .sidepanel {
   height: 0;
@@ -109,6 +111,8 @@ main {
 .openbtn:hover {
   background-color: #444;
 }
+
+/* -------------------- About us -------------------- */
 /* AboutMe Card AA */
 .aboutUs {
   display: flex;
@@ -341,6 +345,9 @@ button {
 #moviDataFigureContainer-Display > figure {
   width: 25%;
 }
+#moviDataFigureContainer-Display > figure > img {
+  height: auto;
+}
 
 #main-Container {
   width: 75%;
@@ -373,7 +380,6 @@ button {
   flex: 0 0 30%;
   min-width: 200px;
   margin-bottom: 1rem;
-  background-color: rebeccapurple;
 }
 @media screen and (max-width: 1150px) {
   .movieData-YoutubeVideos,
@@ -429,8 +435,9 @@ button {
       flex: 0 0 100%;
     }
   }
-} /*Added this line it might cause bugs }*/
+}
 
+/* -------------------- Top 10 -------------------- */
 /*top 10 page card deck parent div*/
 #top10movies {
   padding: 30px;
@@ -572,7 +579,9 @@ body {
 }
 
 /* Fabio New code */
-/* popUp video */
+/* -------------------- popUp video -------------------- */
+/* Makes video container be fixed and positioned relative to the top and left. The 
+width and height make it take the entire screen and the Z index makes it be the first item in the z axis */
 .video-container {
   position: fixed;
   top: 0;
@@ -581,9 +590,11 @@ body {
   height: 100%;
   z-index: 999;
   background-color: rgba(33, 33, 33, 0.878);
+  /* Centers the iframe tag in the center by making it flex */
   display: flex;
   justify-content: center;
   align-items: center;
+  /* Opacity is 0 when unclicked */
   opacity: 0;
   pointer-events: none;
   transition: all 300ms;
@@ -600,10 +611,9 @@ body {
 }
 
 .video-container iframe {
-  /* width: 90%; This is for wide monitors
-  max-width: 1150px; This is for wide monitors*/
   height: 40vw;
   width: 71vw;
+  /* Video has size of 0 when the page is loaded */
   transform: scale(0);
   outline: none;
   transition: all 300ms;
@@ -611,9 +621,11 @@ body {
 
 .show {
   pointer-events: all;
+  /* JS adds the class show to the video-container */
   opacity: 1;
 }
 
 .video-container.show iframe {
+  /* JS adds the class show to the iframe tag to make the scale of the video be 1*/
   transform: scale(1);
 }
