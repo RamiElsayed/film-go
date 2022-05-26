@@ -52,7 +52,7 @@ body {
   align-items: center;
   flex-wrap: wrap;
 }
-#banner-parent-container, .hero .is-info {
+#banner-parent-container, .hero.is-info {
   background-color: none;
 }
 main {
