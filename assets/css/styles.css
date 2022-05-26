@@ -342,6 +342,9 @@ button {
 #moviDataFigureContainer-Display > figure {
   width: 25%;
 }
+#moviDataFigureContainer-Display > figure > img {
+  height: auto;
+}
 
 #main-Container {
   width: 75%;
