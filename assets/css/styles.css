@@ -52,7 +52,9 @@ body {
   align-items: center;
   flex-wrap: wrap;
 }
-
+.hero .is-info {
+  background-color: none;
+}
 main {
   padding: 10rem 1rem;
 }
