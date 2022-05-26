@@ -52,7 +52,7 @@ body {
   align-items: center;
   flex-wrap: wrap;
 }
-.hero .is-info {
+.hero , .is-info {
   background-color: none;
 }
 main {
