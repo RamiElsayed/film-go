@@ -46,7 +46,7 @@ const embedYoutubeVideos = (searchTerm) => {
     });
 };
 
-// embedYoutubeVideos(filmTitle);
+embedYoutubeVideos(filmTitle);
 
 // This function gets the movie description based on its imdb-ID
 const getDescription = (filmId) => {
