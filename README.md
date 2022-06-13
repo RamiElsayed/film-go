@@ -9,5 +9,5 @@
 8. We made sure we learnt and absorbed new technologies we were exposed to.
 9. Most importantly as future software engineers we improved our abilities on solving problems and achieving progress.
 10. [Project link](https://ramielsayed.github.io/film-go/)
-11. [repository linkk](https://github.com/RamiElsayed/film-go.git)
+11. [repository link](https://github.com/RamiElsayed/film-go.git)
 11. ![Project screenshot](./images/Project-screenshot.jpg)
